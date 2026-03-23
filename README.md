@@ -8,6 +8,15 @@
 - Todas as decisões serão tomadas de forma democrática entre os integrantes.
 - Todas as tarefas realizadas devem ser compartilhadas com o grupo, mantendo todos os membros atualizados.
 
+# PADRÃO DE ATA
+**ATA DE REUNIÃO <br>
+Data: <br>
+Horário: <br>
+Local: <br>
+Reunião: <br>
+Participantes: <br>
+Pauta: <br>**
+
 # INTEGRANTES
 Guilherme Moura  <br>
 Isabelle Schimidt  <br>
