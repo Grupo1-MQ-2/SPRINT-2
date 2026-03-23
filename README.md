@@ -28,6 +28,10 @@
 
 - [Modelo de Ata](./atas/modelo_ata.md)
 
+  ## 📊 Plano de Ação
+
+[Acessar Plano de Ação no Notion]( https://www.notion.so/32c986c9cb1b80c5b9f3cfd652c9ef29?v=32c986c9cb1b8074a88c000c820d5883)
+
 
 
 
