@@ -1,4 +1,4 @@
-# REGRAS
+# REGRAS DO GRUPO
 
 - Os integrantes devem participar das reuniões, sendo obrigatória a notificação prévia em caso de ausência.
 - Em caso de ausência, o integrante não participará das decisões tomadas durante a reunião.
