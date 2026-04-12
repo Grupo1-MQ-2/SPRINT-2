@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canalytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styledash.css">
+</head>
+
+<body style="display: flex; flex-direction: column; align-items: center; min-height: 100vh;">
+
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Calculadora</a>
+        <a href="#">Sobre nós</a>
+        <a href="#">Contato</a>
+        <button class="btn-entre" onclick="window.location.href='loginPage.html'">Entre</button>
+        <button class="btn-cadastro" onclick="window.location.href='cadastroPage.html'">Cadastre-se</button>
+    </nav>
+
+    <h1> Canalytics </h1>
+
+    <div class="kpi-container">
+        <div class="kpi-indicadores">concentração atual
+            <p class="kpi-valor">847 ppm</p>
+            <p class="kpi-subtexto">ultimo registro: 17:00</p>
+        </div>
+
+        <div class="kpi-indicadores">média do dia
+            <p class="kpi-valor">831 ppm</p>
+            <p class="kpi-subtexto">dentro do limite</p>
+
+        </div>
+        <div class="kpi-indicadores">alertas hoje
+            <p class="kpi-valor">3</p>
+            <p class="kpi-subtexto">acima de 500 ppm</p>
+        </div>
+    </div>
+
+    <div style="display: flex;">
+        <div>
+            <canvas id="myChart" style="position: relative; height: 25vw; width: 30vw;"></canvas>
+        </div>
+        <div>
+            <canvas id="myChart2" style="position: relative; height: 25vw; width: 30vw;"></canvas>
+        </div>
+    </div>
+
+</body>
+<script>
+    const labels = [
+        '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'
+    ];
+    const data_dados = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Concentração de gás (PPM)',
+                backgroundColor: 'rgb(151, 196, 89)',
+                borderColor: 'rgb(151, 196, 89)',
+                data: [420, 455, 490, 512, 498, 530]
+            }
+        ]
+    };
+
+    const config = {
+        type: 'line',
+        data: data_dados,
+        options: {}
+    }
+
+    const labels2 = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'
+    ];
+
+    const data2 = {
+        labels: labels2,
+        datasets: [
+            {
+                label: 'Pico de gás (PPM)',
+                backgroundColor: 'rgb(151, 196, 89)',
+                borderColor: 'rgb(151, 196, 89)',
+                data: [890, 920, 875, 950, 910, 847]
+            }
+        ]
+    };
+
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {}
+    }
+
+    const myChart = new Chart(
+        document.getElementById('myChart'), config
+    );
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'), config2
+    );
+</script>
