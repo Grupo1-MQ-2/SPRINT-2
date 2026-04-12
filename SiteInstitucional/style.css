@@ -1,110 +1,87 @@
 body {
-    background-color: rgb(5, 112, 5);
-    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.kpi-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.kpi-indicadores {
+    background-color: #EAF3DE;
+    color: #27500A;
+    width: 150px;
     height: 100px;
-    overflow: hidden; 
-}   
-
-.cadastroPage {
-    display: flex;
-    height: 100vh;
-    align-items: center;     
-    justify-content: center; 
-    margin-right: 10px;
-} 
-
-.div_LoginPage {
-    display: flex;
-
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #C0DD97;
 }
- 
-.div_PainelInfo {
+
+.kpi-valor {
+    color: #3B6D11;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 12px 0 0 0;
+}
+
+.kpi-subtexto {
+    color: #000000;
+    font-size: 12px;
+    margin: 5px 0 0 0;
+}
+
+h1 {
+    color: #3B6D11;
+    position: fixed;
+    top: 8px;
+    left: 30px;
+    margin: 0;
+    padding: 15px 0;
+}
+
+h1 span {
+    color: #97C459;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #3B6D11;
+    font-weight: bold;
+}
+
+.btn-entre {
+    background-color: #3B6D11;
     color: white;
-    font-family: sans-serif;
-    width: 42%;
-    padding: 30px 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
- 
-.div_cadastroCard {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgb(48, 46, 46);
-    padding: 50px 50px;
-    width: 400px;       
-    border-radius: 16px;
-}
-
-
-.div_LoginCard {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgb(48, 46, 46);
-    padding: 40px 48px;   
-    margin: 40px;         
-    flex: 1;              
-    border-radius: 16px;
-}
- 
-.div_ipt_CNPJ,
-.div_ipt_razaoSocial,
-.div_ipt_email,
-.div_ipt_senha {
-    width: 100%;
-    margin-bottom: 16px;
-    font-size: 14px;
-    color: #ccc;
-}
-
-#ipt_CNPJ,
-#ipt_razao_social,
-#ipt_confirma_senha,
-#ipt_email_user,
-#ipt_senha_user {
-    width: 100%;
-    padding: 10px 10px;
-    font-size: 14px;
-    border: 1px solid #555;
-    border-radius: 8px;
-    background-color: #555;
-    color: #fff;
-    margin-top: 4px;
-    box-sizing: border-box;
-}
- 
-.div_btn_Cadastrar,
-.div_btn_Entrar {
-    margin-top: 8px;
-}
-
-#btn_Cadastrar,
-#btn_Entrar {
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(5, 112, 5);
-    color: #fff;
     border: none;
-    border-radius: 8px;
-    font-size: 15px;
+    padding: 8px 20px;
+    border-radius: 20px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-
-#btn_Entrar:hover {
-    background-color: rgb(7, 140, 7);
-}
- 
-.div_criarConta {
-    margin-top: 12px;
-    font-size: 13px;
-    color: #aaa;
-}
- 
-.div_criarConta a {
-    color: rgb(5, 180, 5);
-}
- 
+.btn-cadastro {
+    background-color:white;
+    color: #3B6D11;
+    border: 2px solid #3B6D11;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}           
