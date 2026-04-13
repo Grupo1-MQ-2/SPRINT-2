@@ -24,8 +24,6 @@
 
   ## 📄 Atas de Reunião
 
-- [Ata 1](./atas/ata1.md)
-
 - [Modelo de Ata](./atas/modelo_ata.md)
 
   ## 📊 Plano de Ação
