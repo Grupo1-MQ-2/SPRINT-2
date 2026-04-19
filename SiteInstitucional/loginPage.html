@@ -1,54 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Screen</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="script.js">
+    <link rel="stylesheet" href="style.css" />
+    <link href="script.js" />
     <script src="script.js" defer></script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="div_LoginPage">
-        <div class="div_PainelInfo">
+      <div class="div_PainelInfo">
+        <h2 style="font-size: 38px">Monitoramento de queimadas em Canaviais</h2>
 
-            <h2 style="font-size: 38px;">Monitoramento de queimadas em Canaviais</h2>
+        <p
+          style="
+            font-size: 22px;
+            font-family:
+              &quot;Lucida Sans&quot;, &quot;Lucida Sans Regular&quot;,
+              &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;,
+              Geneva, Verdana, sans-serif;
+          "
+        >
+          Acesse o sistema para visualizar as leituras do sensor MQ-2 e
+          acompanhar alertas em tempo real.
+        </p>
+        <ul>
+          Sensor MQ-2 com Arduino Uno
+        </ul>
+        <ul>
+          Monitoramento contínuo de gás
+        </ul>
+        <ul>
+          Alertas automáticos de risco
+        </ul>
+        <h5>Canalytics - 2026</h5>
+      </div>
 
-            <p style="font-size: 22px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-                
-                Acesse o sistema para visualizar as
-                leituras do sensor MQ-2 e acompanhar
-                alertas em tempo real.</p>
-            <ul>Sensor MQ-2 com Arduino Uno</ul>
-            <ul>Monitoramento contínuo de gás</ul>
-            <ul>Alertas automáticos de risco</ul>
-            <h5>Canalytics - 2026</h5>
+      <div class="div_LoginCard">
+        <div class="div_ipt_email">
+          E-mail<br />
+          <input
+            id="ipt_email_user"
+            type="email"
+            placeholder="exemplo@gmail.com"
+          />
+        </div>
+        <br />
+
+        <div class="div_ipt_senha">
+          Senha <br />
+          <input id="ipt_senha_user" type="password" placeholder="********" />
+        </div>
+        <br />
+
+        <div class="div_btn_Entrar">
+          <button id="btn_Entrar" onclick="Entrar()">Entrar</button>
         </div>
 
-        <div class="div_LoginCard">
-            <div class="div_ipt_email">
-                E-mail<br>
-                <input id="ipt_email_user" type="email" placeholder="exemplo@gmail.com">
-            </div><br>
-
-            <div class="div_ipt_senha">
-                Senha <br>
-                <input id="ipt_senha_user" type="password" placeholder="********">
-            </div><br>
-
-            <div class="div_btn_Entrar">
-                <button id="btn_Entrar" onclick="Entrar()">Entrar</button>
-            </div>
-
-            <div class="div_criarConta">
-                Não tem conta? <a href="cadastroPage.html">Criar Conta</a>
-            </div>
+        <div class="div_criarConta">
+          Não tem conta? <a href="cadastroPage.html">Criar Conta</a>
         </div>
-        
+      </div>
     </div>
-</body>
+  </body>
 
+  <script>
+
+    function validacoes() {
+      const emailDigitado = ipt_email_user.value.trim().toLowerCase();
+      const senhaDigitada = ipt_senha_user.value.trim();
+
+      const camposVazios = emailDigitado == "" || senhaDigitada == "";
+
+      if (camposVazios) {
+        alert("Preencha o e-mail e a senha para entrar");
+        return false;
+      }
+
+      const emailInvalido = emailDigitado.indexOf("@") == -1 || emailDigitado.indexOf(".") == -1;
+
+      if (emailInvalido) {
+        alert("Insira um e-mail válido com @ e '.'");
+        return false;
+      }
+
+      const senhaCurta = senhaDigitada.length < 6;
+
+      if (senhaCurta) {
+        alert("A senha precisa ter no mínimo 6 caracteres");
+        return false;
+      }
+
+      let temNumero = false; 
+
+      for (let ind = 0; ind < senhaDigitada.length; ind++) {
+        let caractereAtual = senhaDigitada[ind];
+
+        if (caractereAtual >= "0" && caractereAtual <= "9") {
+          temNumero = true; 
+          break; //  Para ao achar um número
+        }
+      }
+
+      if (!temNumero) { // se não tem número ( ! é negação )
+        alert("A senha precisa conter pelo menos um número");
+        return false;
+      }
+
+      // Se chegou até aqui, todas as validações deram true pae
+      return true;
+    }
+
+    function Entrar() {
+      // Chama a validação e trava se der ruim
+      if (!validacoes()) {
+        return;
+      }
+
+      // Lógica do login aqui
+      alert("Login validado com sucesso");
+    }
+  </script>
 </html>
