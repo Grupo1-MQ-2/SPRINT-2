@@ -6,21 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canalytics</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dash.css">
 </head>
 
-<body style="display: flex; flex-direction: column; align-items: center; min-height: 100vh;">
+<body class="dashboard" style="display: flex; flex-direction: column; align-items: center; min-height: 100vh;">
 
-    <nav>
-        <a href="#">Início</a>
-        <a href="#">Calculadora</a>
-        <a href="#">Sobre nós</a>
-        <a href="#">Contato</a>
-        <button class="btn-entre" onclick="window.location.href='loginPage.html'">Entre</button>
-        <button class="btn-cadastro" onclick="window.location.href='cadastroPage.html'">Cadastre-se</button>
-    </nav>
+<nav>
+    <div style="display: flex; align-items: center; gap: 10px;">
+       <img src="img/Canalytics.png" alt="Logo Canalytics" style="height: 150px; width: auto;">
+    </div>
+    <div style="display: flex; align-items: center; gap: 20px;">
 
-    <h1> Canalytics </h1>
+     <button class="btn-1" onclick="window.location.href='index.html'">Inicio</button>
+     <button class="btn-1" onclick="window.location.href='calculadora.html'">Calculadora</button>
+     <button class="btn-1" onclick="window.location.href='cadastroPge.html'">Sobre nós</button>
+     <button class="btn-1" onclick="window.location.href='cadastroPge.html'">Contate-nos</button>
+
+        <!-- <button class="btn-entre" onclick="window.location.href='loginPage.html'">Entre</button>
+        <button class="btn-cadastro" onclick="window.location.href='cadastroPage.html'">Cadastre-se</button> -->
+    </div>
+</nav>
 
     <div class="kpi-container">
         <div class="kpi-indicadores">concentração atual
