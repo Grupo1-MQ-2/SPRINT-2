@@ -32,7 +32,7 @@
 
 ## ⚙️ Ferramenta de Gestão
 
-[Acesso ao trello]_(https://trello.com/b/dAscLWpw/projeto-canalytics-sprint-2)
+[Acesso ao trello](https://trello.com/b/dAscLWpw/projeto-canalytics-sprint-2)
 
 
 
