@@ -32,7 +32,7 @@
 
 ## ⚙️ Ferramenta de Gestão
 
-- https://trello.com/invite/b/69b9821b08f841d4fe3362a2/ATTIfa9e7411345e6143ec4b82a1e1832e972262DAC3/sprint-2
+[Acesso ao trello] (https://trello.com/invite/b/69b9821b08f841d4fe3362a2/ATTIfa9e7411345e6143ec4b82a1e1832e972262DAC3/sprint-2)
 
 
 
