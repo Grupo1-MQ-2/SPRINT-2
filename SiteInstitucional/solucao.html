@@ -11,7 +11,9 @@
 <body>
     <nav class="barra-navegacao">
         <div class="container-navegacao">
-            <a href="index.html" class="logotipo">Canalytics</a>
+            <a href="index.html" class="logotipo">
+                <img src="img/CanalyticsLogo.png" alt="logotipo" style="height: 40px; width: auto;">
+            </a>
             <ul class="menu-lista">
                 <li class="menu-item"><a href="index.html" class="link-menu">Início</a></li>
                 <li class="menu-item"><a href="solucao.html" class="link-menu-ativo">Solução</a></li>
@@ -20,24 +22,23 @@
             </ul>
         </div>
     </nav>
-
-    <main class="area-principal">
-        <section class="secao-hero-solucao">
-            <div class="flex-container">
-                <div class="coluna-texto">
-                    <p class="etiqueta-verde">Nossa solução</p>
-                    <h1 class="manchete-principal">Detectar <span class="enfase-verde">antes</span> que o fogo comece</h1>
-                    <p class="paragrafo-comum">
-                        O Canalytics monitora continuamente a concentração de gases inflamáveis nos canaviais
-                        usando o sensor MQ-2 conectado ao Arduino Uno. Quando os níveis ultrapassam o limite
-                        seguro, o sistema emite alertas imediatos, permitindo agir antes que uma queimada se instale.
-                    </p>
-                </div>
-                <div class="coluna-imagem">
-                    <img src="img/canavial.webp" alt="Canavial" class="imagem-responsivel">
-                </div>
+    <section class="secao-hero-solucao">
+        <div class="flex-container">
+            <div class="coluna-texto">
+                <p class="etiqueta-verde">Nossa solução</p>
+                <h1 class="manchete-principal">Detectar <span>antes</span> que o fogo <br> comece
+                </h1>
+                <p class="paragrafo-comum">
+                    O Canalytics monitora continuamente a concentração de gases <br>
+                    inflamáveis nos canaviais usando o sensor MQ-2 conectado ao <br>
+                    Arduino Uno. Quando os níveis ultrapassam o limite seguro, o <br>
+                    sistema emite alertas imediatos, permitindo agir antes que uma <br>
+                    queimada se instale.
+                </p>
             </div>
-        </section>
+        </div>
+    </section>
+    <main class="area-principal">
 
         <section class="secao-contexto">
             <div class="cartao-problema">
@@ -50,7 +51,7 @@
                     </p>
                 </div>
                 <div class="imagem-do-problema">
-                    <img src="img/canavial.fogo.webp" alt="Queimada em canavial" class="imagem-responsivel">
+                    <img src="img/canavial.fogo.jpg" alt="Queimada em canavial" class="imagem-responsivel">
                 </div>
             </div>
         </section>
@@ -83,7 +84,7 @@
                     </p>
                 </div>
                 <div class="imagem-etapa">
-                    <img src="img/etapa2_foto.webp" alt="Sensor MQ-2" class="imagem-responsivel">
+                    <img src="img/etapa2_foto.jpg" alt="Sensor MQ-2" class="imagem-responsivel">
                 </div>
             </div>
 
@@ -93,11 +94,11 @@
                     <p class="paragrafo-comum">
                         O Arduino Uno recebe o sinal do sensor, converte em ppm e compara com os limites
                         definidos no código: abaixo de 300 ppm é normal, entre 300 e 600 ppm é atenção,
-                        acima de 600 ppm é crítico. Tudo isso acontece em tempo real.
+                        acima de 1000 ppm é crítico. Tudo isso acontece em tempo real.
                     </p>
                 </div>
                 <div class="imagem-etapa">
-                    <img src="img/etapa3_foto.webp" alt="Arduino Uno" class="imagem-responsivel">
+                    <img src="img/etapa3_foto.jpg" alt="Arduino Uno" class="imagem-responsivel">
                 </div>
             </div>
 
@@ -106,12 +107,13 @@
                     <h3 class="titulo-etapa">4. Alerta é disparado no monitoramento</h3>
                     <p class="paragrafo-comum">
                         No nível de gás de risco, o sistema aciona o alerta. O LED muda de cor conforme o
-                        nível de concentração, o buzzer soa e os dados são enviados ao dashboard em tempo real,
+                        nível de concentração, o alerta chega ao produtor e os dados são enviados ao dashboard em tempo
+                        real,
                         indicando o ponto de risco no mapa.
                     </p>
                 </div>
                 <div class="imagem-etapa">
-                    <img src="img/etapa4_foto.webp" alt="Painel de alerta" class="imagem-responsivel">
+                    <img src="img/etapa4_foto.jpg" alt="Painel de alerta" class="imagem-responsivel">
                 </div>
             </div>
 
@@ -125,7 +127,7 @@
                     </p>
                 </div>
                 <div class="imagem-etapa">
-                    <img src="foto-etapa5.jpg" alt="Gráfico de dados" class="imagem-responsivel">
+                    <img src="img/etapa5_foto.png" alt="Gráfico de dados" class="imagem-responsivel">
                 </div>
             </div>
         </section>
@@ -137,19 +139,22 @@
                 <div class="item-card">
                     <h3 class="titulo-card">Proteção da produção</h3>
                     <p class="texto-do-card">
-                        Detectar o gás da cana antes do fogo evita a perda de toneladas de produção e prejuízos financeiros irreversíveis para o produtor.
+                        Detectar o gás da cana antes do fogo evita a perda de toneladas de produção e prejuízos
+                        financeiros irreversíveis para o produtor.
                     </p>
                 </div>
                 <div class="item-card">
                     <h3 class="titulo-card">Tecnologia acessível</h3>
                     <p class="texto-do-card">
-                        O sistema usa componentes de baixo custo, Arduino Uno e sensor MQ-2, tornando a solução viável para pequenos e médios produtores.
+                        O sistema usa componentes de baixo custo, Arduino Uno e sensor MQ-2, tornando a solução viável
+                        para pequenos e médios produtores.
                     </p>
                 </div>
                 <div class="item-card">
                     <h3 class="titulo-card">Impacto ambiental</h3>
                     <p class="texto-do-card">
-                        Queimadas liberam CO₂ e gases tóxicos em larga escala. Preveni-las reduz emissões e protege o solo e a biodiversidade local.
+                        Queimadas liberam CO₂ e gases tóxicos em larga escala. Preveni-las reduz emissões e protege o
+                        solo e a biodiversidade local.
                     </p>
                 </div>
             </div>
