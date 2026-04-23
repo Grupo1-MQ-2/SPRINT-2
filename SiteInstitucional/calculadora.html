@@ -51,7 +51,7 @@
     <button class="btn" onclick="calcularAnual()">Plano Anual (Premium)</button>
     </div>
     <br><br>
-    <div class="caixa">
+    <div id="caixa" class="caixa" style="display: none;">
     <div class="mensagens">
     <div id="divPatrimonioRisco" ></div>
     <br>
@@ -68,6 +68,7 @@
 
 <script>
     function validacoes() {
+      caixa.style.display="block"
       divPatrimonioRisco.innerHTML = "";
       divResultadoInvestimento.innerHTML = "";
 
