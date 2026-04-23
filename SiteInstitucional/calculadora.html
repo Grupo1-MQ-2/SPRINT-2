@@ -9,28 +9,40 @@
 </head>
 
 <body class="body">
+      <nav class="barra-navegacao">
+        <div class="container-navegacao">
+            <a href="index.html" class="logotipo">
+                <img src="img/CanalyticsLogo.png" alt="logotipo" style="height: 40px; width: auto;">
+            </a>
+            <ul class="menu-lista">
+                <li class="menu-item"><a href="index.html" class="link-menu">Início</a></li>
+                <li class="menu-item"><a href="solucao.html" class="link-menu">Solução</a></li>
+                <li class="menu-item"><a href="calculadora.html" class="link-menu-ativo">Calculadora</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="navbar">
             <div class="titulo">
-    <h2 style=" font-size: 38px; color: white; ">🌿 Simulador Financeiro </h2>
+    <h2 style=" font-size: 38px; color: #01352c; ">🌿 Simulador Financeiro </h2>
      <div class="pequeno">
-    <h2 style="color: lightgray;">Estime o impacto financeiro de um incêndio na sua plantação</h2>
+    <h2 style="color: #01352c;">Estime o impacto financeiro de um incêndio na sua plantação</h2>
     </div>
     </div>
     </div>
     <div class="main">
-    <label style="font-size: 22px; color: #007000";>Informe a quantidade de hectares da sua cultura de cana:</label>
+    <label style="font-size: 22px; color: #01352c";>Informe a quantidade de hectares da sua cultura de cana:</label>
 <br>
     <input type="number" id="inputAreaHectares" class="input" placeholder="Ex: 10">
 <br>
 <br>
     <br>
-    <label style="font-size: 22px; color: #007000";>Informe o perímetro da área da plantação (Em metros):</label>
+    <label style="font-size: 22px; color: #01352c";>Informe o perímetro da área da plantação (Em metros):</label>
 <br>
     <input type="number" id="inputPerimetroMetros" class="input" placeholder="Ex: 4000">
 <br>
 <br>
-</div>
+
 <div class="button">
     <button class="btn" onclick="calcularTrimestral()">Plano Trimestral (Econômico)</button>
     
@@ -47,7 +59,11 @@
     <br>
     </div>
     </div>
+    </div>
 
+       <footer class="rodape-final">
+        <p class="texto-copyright">© 2026 Projeto Canalytics - São Paulo Tech School</p>
+    </footer>
 </body>
 
 <script>

@@ -1,16 +1,64 @@
 body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #e9ecef;
+    color: #1f1e1e;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+}
+
+.barra-navegacao {
+    background-color: #01352c;
+    padding: 12px 0px;
+}
+
+.container-navegacao {
+    max-width: 1100px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 20px 0 0;
+    height: 100%;
+}
+
+.logotipo img {
+    height: 90%;
+    max-height: 60px;
+    width: auto;
+    display: block;
+}
+
+.menu-lista {
+    display: flex;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.menu-item {
+    margin-left: 20px;
+}
+
+.link-menu,
+.link-menu-ativo {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.link-menu-ativo {
+    color: green;
+    font-weight: bold;
 }
 
 
+
+
 .navbar {
-    background-color: #007000;
+    
     width: 100%;
     padding: 20px 0;
     text-align: center;
@@ -22,13 +70,10 @@ body {
 
 
 .main {
-    background-color: white;
-    width: 90%;
-    max-width: 600px;
-    padding: 30px;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 1100px;
+    margin: 0px auto;
+    padding: 40px 20px;
+    flex: 1;
 }
 
 
@@ -53,16 +98,16 @@ body {
 .btn {
     padding: 15px;
     cursor: pointer;
-    border: 1px solid #007000;
+    border: 1px solid #01352c;
     background-color: white;
-    color: #007000;
+    color: #01352c;
     border-radius: 5px;
     font-weight: bold;
     transition: 0.3s;
 }
 
 .btn:hover {
-    background-color: #007000;
+    background-color: #01352c;
     color: white;
 }
 
@@ -73,10 +118,32 @@ body {
     max-width: 700px;
     padding: 20px;
     border-radius: 10px;
-    border-left: 5px solid #007000;
+    border-left: 5px solid #bad8b6;
 }
 
 .mensagens {
     color: #333;
     line-height: 1.6;
+}
+
+
+.comentario {
+
+}
+
+.rodape-final {
+    background-color: #27500A;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 0px;
+}
+
+.texto-copyright {
+    margin: 0px;
+}
+
+.titulo-etapa {
+    font-size: 22px;
+    color: #d3d0d0;
+    margin-bottom: 10px;
 }

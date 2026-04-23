@@ -10,7 +10,7 @@ body {
 }
 
 .barra-navegacao {
-    background-color: #4b4a4a;
+    background-color: #01352c;
     padding: 12px 0px;
 }
 
@@ -99,7 +99,7 @@ body {
 }
 
 .cartao-problema {
-    background-color: #FF8C00;
+    background-color: #01352c;
     border-radius: 16px;
     padding: 30px;
 }
@@ -167,6 +167,14 @@ h1 span {
     font-size: 18px;
     margin: 0px 0px 15px 0px;
     color: #444444;
+}
+
+.p1{
+    color: #ffffff;
+}
+
+.sub1{
+    color: green ;
 }
 
 .alinhamento-central {
