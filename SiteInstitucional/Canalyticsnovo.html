@@ -9,23 +9,20 @@
     <link rel="stylesheet" href="dash.css">
 </head>
 
-<body class="dashboard" style="display: flex; flex-direction: column; align-items: center; min-height: 100vh;">
+<body>
 
-<nav>
-    <div style="display: flex; align-items: center; gap: 10px;">
-       <img src="https://raw.githubusercontent.com/Grupo1-MQ-2/SPRINT-2/main/SiteInstitucional/img/logo_canalytics.png" alt="Logo Canalytics" style="height: 150px; width: auto;">
-    </div>
-    <div style="display: flex; align-items: center; gap: 20px;">
-
-     <button class="btn-1" onclick="window.location.href='index.html'">Início</button>
-     <button class="btn-1" onclick="window.location.href='calculadora.html'">Calculadora</button>
-     <button class="btn-1" onclick="window.location.href='cadastroPge.html'">Sobre nós</button>
-     <button class="btn-1" onclick="window.location.href='cadastroPge.html'">Contato</button>
-
-        <!-- <button class="btn-entre" onclick="window.location.href='loginPage.html'">Entre</button>
-        <button class="btn-cadastro" onclick="window.location.href='cadastroPage.html'">Cadastre-se</button> -->
-    </div>
-</nav>
+      <nav class="barra-navegacao">
+        <div class="container-navegacao">
+            <a href="index.html" class="logotipo">
+                <img src="img/CanalyticsLogo.png" alt="logotipo" style="height: 40px; width: auto;">
+            </a>
+            <ul class="menu-lista">
+                <li class="menu-item"><a href="index.html" class="link-menu">Início</a></li>
+                <li class="menu-item"><a href="solucao.html" class="link-menu">Solução</a></li>
+                <li class="menu-item"><a href="calculadora.html" class="link-menu-ativo">Calculadora</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="kpi-container">
         <div class="kpi-indicadores">concentração atual

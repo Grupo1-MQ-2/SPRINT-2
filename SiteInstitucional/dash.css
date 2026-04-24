@@ -1,3 +1,14 @@
+body {
+    background-color:  #f5f5f5;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+
+
 .kpi-container {
     display: flex;
     gap: 20px;
@@ -44,46 +55,46 @@ h1 span {
 }
 
 
-.btn-2 {
-    background-color: #3B6D11;
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-}
 
-.btn-1 {
-    background-color:white;
-    color: #3B6D11;
-    border: 2px solid #3B6D11;
-    padding: 8px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-}           
-
-body.dashboard {
-    background-color: white;
-    padding-top: 90px; 
-}
-nav {
-    background-color: #EAF3DE;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+.barra-navegacao {
+    background-color: #01352c;
+    padding: 12px 0;
     width: 100%;
-    padding: 8px 30px;
+    
+}
+
+.container-navegacao {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    box-sizing: border-box;
-    height: 70px; 
+    align-items: center;
+    padding: 0 20px;
 }
-nav a {
+
+.menu-lista {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    margin-left: 20px;
+}
+
+.link-menu {
     text-decoration: none;
-    color: #3B6D11;
-    font-weight: bold;
+    color: #ffffff;
+    font-weight: 500;
 }
+
+.link-menu:hover {
+    color: #97C459;
+}
+.link-menu-ativo:hover {
+    color: #97C459;
+}
+
+
