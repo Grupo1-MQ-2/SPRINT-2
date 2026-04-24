@@ -1,143 +1,146 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Screen</title>
-    <link rel="stylesheet" href="login-cadastro(unir).css" />
-    <script src="script.js" defer></script>
-  </head>
+<html lang="pt-br">
 
-  <body>
-    <div class="cadastroPage">
-      <div class="div_cadastroCard">
-        <div class="div_ipt_razaoSocial">
-          Razão Social <br />
-          <input
-            id="ipt_razao_social"
-            placeholder="*Arcos Dourados Comércio de Alimentos S.A*"
-          />
-        </div>
-        <br />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="login-cadastro(unir).css" />
+</head>
 
-        <div class="div_ipt_CNPJ">
-          CNPJ<br />
-          <input id="ipt_CNPJ" placeholder="12345678000195" />
-        </div>
-        <br />
+<body>
+  <div class="cadastroPage">
+    <div class="div_cadastroCard">
+      <div class="div_ipt_razaoSocial">
+        Razão Social <br />
+        <input id="ipt_razao_social" placeholder="*Arcos Dourados Comércio de Alimentos S.A*" />
+      </div>
+      <br />
 
-        <div class="div_ipt_email">
-          E-mail<br />
-          <input
-            id="ipt_email_user"
-            type="email"
-            placeholder="emailRepresentante@gmail.com"
-          />
-        </div>
-        <br />
+      <div class="div_ipt_CNPJ">
+        CNPJ<br />
+        <input id="ipt_CNPJ" placeholder="12345678000195" />
+      </div>
+      <br />
 
-        <div class="div_ipt_senha">
-          Senha <br />
-          <input id="ipt_senha_user" type="password" placeholder="********" />
-        </div>
-        <br />
+      <div class="div_ipt_email">
+        E-mail<br />
+        <input id="ipt_email_user" type="email" placeholder="emailRepresentante@gmail.com" />
+      </div>
+      <br />
 
-        <div class="div_ipt_senha">
-          Confirmar Senha <br />
-          <input
-            id="ipt_confirma_senha"
-            type="password"
-            placeholder="********"
-          />
-        </div>
-        <br />
+      <div class="div_ipt_senha">
+        Senha <br />
+        <input id="ipt_senha_user" type="password" placeholder="********" />
+      </div>
+      <br />
 
-        <div class="div_btn_Cadastrar">
-          <a href="loginPage.html">
-            <button id="btn_Cadastrar" onclick="Cadastrar()">Cadastrar</button>
-          </a>
+      <div class="div_ipt_senha">
+        Confirmar Senha <br />
+        <input id="ipt_confirma_senha" type="password" placeholder="********" />
+      </div>
+      <br />
+
+      <div class="div_btn_Cadastrar">
+
+        <button id="btn_Cadastrar" onclick="Cadastrar()">Cadastrar</button>
+        </a>
+        <div class="div_criarConta">
+          Já tem conta? <a href="loginPage.html">Entrar agora</a>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 
-  <script>
-    function validacoes() {
-      const razaoSocial = ipt_razao_social.value.trim();
-      const cnpj = ipt_CNPJ.value.trim();
-      const email = ipt_email_user.value.trim().toLowerCase();
-      const senha = ipt_senha_user.value.trim();
-      const confirmaSenha = ipt_confirma_senha.value.trim();
+<script>
+  function validacoes() {
+    const razaoSocial = ipt_razao_social.value.trim();
+    const cnpj = ipt_CNPJ.value.trim();
+    const email = ipt_email_user.value.trim().toLowerCase();
+    const senha = ipt_senha_user.value.trim();
+    const confirmaSenha = ipt_confirma_senha.value.trim();
 
-      const camposVazios =
-        razaoSocial == "" ||
-        cnpj == "" ||
-        email == "" ||
-        senha == "" ||
-        confirmaSenha == "";
+    const camposVazios =
+      razaoSocial == "" ||
+      cnpj == "" ||
+      email == "" ||
+      senha == "" ||
+      confirmaSenha == "";
 
-      if (camposVazios) {
-        alert("Todos os campos são obrigatórios, preencha para continuar");
-        return false;
-      }
-
-      const cnpjInvalido = cnpj.length != 14;
-
-      if (cnpjInvalido) {
-        alert("O CNPJ deve conter exatamente 14 caracteres");
-        return false;
-      }
-
-      const emailInvalido = email.indexOf("@") == -1 || email.indexOf(".") == -1;
-
-      if (emailInvalido) {
-        alert("Insira um e-mail válido com @ e '.'");
-        return false;
-      }
-
-      const senhaInvalida = senha.length < 6;
-
-      if (senhaInvalida) {
-        alert("Insira uma senha com no mínimo 6 caracteres");
-        return false;
-      }
-
-      // Hotfix: Coloquei verificação de digíto numérico no login e esqueci de colocar no cadastro
-      let temNumero = false;
-
-      for (let ind = 0; ind < senha.length; ind++) {
-        let caractereAtual = senha[ind];
-
-        if (caractereAtual >= "0" && caractereAtual <= "9") {
-          temNumero = true;
-          break;
-        }
-      }
-
-      if (!temNumero) {
-        alert("A senha precisa conter pelo menos um número");
-        return false;
-      }
-
-      const senhasDiferentes = senha != confirmaSenha;
-
-      if (senhasDiferentes) {
-        alert("As senhas não coincidem, digite novamente");
-        return false;
-      }
-
-      // Se chegou até aqui, todas as validações deram true pae
-      return true;
+    if (camposVazios) {
+      alert("Todos os campos são obrigatórios, preencha para continuar");
+      return false;
     }
 
-    function Cadastrar() {
-      // Chama a validação, trava se der ruim
-      if (!validacoes()) {
-        return;
-      }
+    const cnpjInvalido = cnpj.length != 14;
 
-      // Lógica de cadastro aqui
-      alert("Cadastrado com sucesso!");
+    if (cnpjInvalido) {
+      alert("O CNPJ deve conter exatamente 14 caracteres");
+      return false;
     }
-  </script>
+
+    const emailInvalido = email.indexOf("@") == -1 || email.indexOf(".") == -1;
+
+    if (emailInvalido) {
+      alert("Insira um e-mail válido com @ e '.'");
+      return false;
+    }
+
+    const senhaInvalida = senha.length < 6;
+
+    if (senhaInvalida) {
+      alert("Insira uma senha com no mínimo 6 caracteres");
+      return false;
+    }
+
+    // Hotfix: Coloquei verificação de digíto numérico no login e esqueci de colocar no cadastro
+    let temNumero = false;
+
+    for (let ind = 0; ind < senha.length; ind++) {
+      let caractereAtual = senha[ind];
+
+      if (caractereAtual >= "0" && caractereAtual <= "9") {
+        temNumero = true;
+        break;
+      }
+    }
+
+    if (!temNumero) {
+      alert("A senha precisa conter pelo menos um número");
+      return false;
+    }
+
+    const senhasDiferentes = senha != confirmaSenha;
+
+    if (senhasDiferentes) {
+      alert("As senhas não coincidem, digite novamente");
+      return false;
+    }
+
+    // Se chegou até aqui, todas as validações deram true pae
+    return true;
+  }
+
+
+  function Cadastrar() {
+    // Chama a validação, trava se der ruim
+    if (!validacoes()) {
+      return;
+    }
+
+    ipt_razao_social.value = "";
+    ipt_CNPJ.value = "";
+    ipt_email_user.value = "";
+    ipt_senha_user.value = "";
+    ipt_confirma_senha.value = "";
+
+
+    // Lógica de cadastro aqui
+    alert("Cadastrado com sucesso!");
+    window.location = "loginPage.html";
+
+  }
+</script>
+
 </html>
