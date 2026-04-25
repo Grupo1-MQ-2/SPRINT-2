@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="telaAcesso.css" />
+  <title>Acesso - Canalytics</title>
+</head>
+
+<body>
+  <nav class="barra-navegacao">
+    <div class="container-navegacao">
+      <a href="index.html" class="logotipo">
+        <img src="img/CanalyticsLogo.png" alt="logotipo" style="height: 40px; width: auto;">
+      </a>
+      <ul class="menu-lista">
+        <li class="menu-item"><a href="index.html" class="link-menu">← Voltar ao Início</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="div_LoginPage">
+    
+    <div class="div_PainelInfo">
+      <h2 style="font-size: 38px; margin-bottom: 0;">Monitoramento de queimadas em Canaviais</h2>
+      <p style="font-size: 22px; line-height: 1.5; color: #333;">
+        Acesse o sistema para visualizar as leituras do sensor <strong>MQ-2</strong> e acompanhar alertas em tempo real.
+      </p>
+    </div>
+
+    <div class="div_LoginCard" id="tela_login">
+      <div class="div_ipt_email">
+        E-mail<br />
+        <input id="ipt_email_login" type="email" placeholder="exemplo@gmail.com" />
+      </div>
+      
+      <div class="div_ipt_senha">
+        Senha <br />
+        <input id="ipt_senha_login" type="password" placeholder="********" />
+      </div>
+      
+      <div class="div_btn_Entrar">
+        <button onclick="Entrar()">Entrar</button>
+      </div>
+
+      <div class="div_criarConta">
+      Não tem conta? <a onclick="alternarTelas()">Criar Conta</a>
+      </div>
+    </div>
+
+    <div class="div_cadastroCard" id="tela_cadastro" style="display: none;">
+      <div class="div_ipt_razaoSocial">
+        Razão Social <br />
+        <input id="ipt_razao_social" placeholder="*Arcos Dourados Comércio de Alimentos S.A*" />
+      </div>
+
+      <div class="div_ipt_CNPJ">
+        CNPJ<br />
+        <input id="ipt_CNPJ" placeholder="12345678000195" />
+      </div>
+
+      <div class="div_ipt_email">
+        E-mail<br />
+        <input id="ipt_email_cadastro" type="email" placeholder="emailRepresentante@gmail.com" />
+      </div>
+
+      <div class="div_ipt_senha">
+        Senha <br />
+        <input id="ipt_senha_cadastro" type="password" placeholder="********" />
+      </div>
+
+      <div class="div_ipt_senha">
+        Confirmar Senha <br />
+        <input id="ipt_confirma_senha" type="password" placeholder="********" />
+      </div>
+
+      <div class="div_btn_Cadastrar">
+        <button onclick="Cadastrar()">Cadastrar</button>
+        <div class="div_criarConta">
+        Não tem conta? <a onclick="alternarTelas()">Criar Conta</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="rodape-final">
+    <p class="texto-copyright">© 2026 Projeto Canalytics - São Paulo Tech School</p>
+  </footer>
+
+<script>
+    function alternarTelas() {
+      const modoLogin = tela_login.style.display != 'none';
+
+      if (modoLogin) {
+        tela_login.style.display = 'none';
+        tela_cadastro.style.display = 'flex'; 
+      } else {
+        tela_cadastro.style.display = 'none';
+        tela_login.style.display = 'flex'; 
+      }
+    }
+
+    function validacoes() {
+      const modoLogin = tela_login.style.display != 'none';
+      let email = "";
+      let senha = "";
+
+
+      if (modoLogin) { // login
+        email = ipt_email_login.value.trim().toLowerCase();
+        senha = ipt_senha_login.value.trim();
+
+        if (email == "" || senha == "") {
+          alert("Preencha o e-mail e a senha para entrar");
+          return false;
+        }
+
+      } else { // Cadastro
+        const razaoSocial = ipt_razao_social.value.trim();
+        const cnpj = ipt_CNPJ.value.trim();
+        const confirmaSenha = ipt_confirma_senha.value.trim();
+        
+        email = ipt_email_cadastro.value.trim().toLowerCase();
+        senha = ipt_senha_cadastro.value.trim();
+
+        if (razaoSocial == "" || cnpj == "" || email == "" || senha == "" || confirmaSenha == "") {
+          alert("Todos os campos são obrigatórios, preencha para continuar");
+          return false;
+        }
+        if (cnpj.length != 14) {
+          alert("O CNPJ deve conter exatamente 14 caracteres");
+          return false;
+        }
+        if (senha != confirmaSenha) {
+          alert("As senhas não coincidem, digite novamente");
+          return false;
+        }
+
+      }   //fecha validação de cadastro
+      
+       // Validações em comum para ambas as telas
+
+      if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+        alert("Insira um e-mail válido com @ e '.'");
+        return false;
+      }
+
+      if (senha.length < 6) {
+        alert("A senha precisa ter no mínimo 6 caracteres");
+        return false;
+      }
+
+      let temNumero = false;
+      for (let ind = 0; ind < senha.length; ind++) {
+        if (senha[ind] >= "0" && senha[ind] <= "9") {
+          temNumero = true;
+          break;
+        }
+      }
+
+      if (!temNumero) {
+        alert("A senha precisa conter pelo menos um número");
+        return false;
+      }
+
+      // Se passou por todas as barreiras, retorna true
+      return true;
+    }
+
+    function Entrar() {
+      if (!validacoes()) return;
+
+      ipt_email_login.value = "";
+      ipt_senha_login.value = "";
+      
+      alert("Login realizado com sucesso");
+      //Dashboard
+      window.location = "Canalyticsnovo.html"; 
+    }
+
+    function Cadastrar() {
+      if (!validacoes()) return;
+
+      ipt_razao_social.value = "";
+      ipt_CNPJ.value = "";
+      ipt_email_cadastro.value = "";
+      ipt_senha_cadastro.value = "";
+      ipt_confirma_senha.value = "";
+
+      alert("Cadastrado com sucesso! Faça login para continuar.");
+      
+      alternarTelas(); 
+    }
+  </script>
+</body>
+
+</html>
