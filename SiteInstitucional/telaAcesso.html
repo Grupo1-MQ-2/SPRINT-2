@@ -78,7 +78,7 @@
       <div class="div_btn_Cadastrar">
         <button onclick="Cadastrar()">Cadastrar</button>
         <div class="div_criarConta">
-        Não tem conta? <a onclick="alternarTelas()">Criar Conta</a>
+        Já tem uma conta? <a onclick="alternarTelas()">Fazer Login</a>
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@
       let senha = "";
 
 
-      if (modoLogin) { // login
+      if (modoLogin) {
         email = ipt_email_login.value.trim().toLowerCase();
         senha = ipt_senha_login.value.trim();
 
@@ -138,6 +138,7 @@
           return false;
         }
 
+[]
       }   //fecha validação de cadastro
       
        // Validações em comum para ambas as telas
@@ -176,7 +177,7 @@
       ipt_senha_login.value = "";
       
       alert("Login realizado com sucesso");
-      //Dashboard
+      // Dashboard
       window.location = "Canalyticsnovo.html"; 
     }
 
