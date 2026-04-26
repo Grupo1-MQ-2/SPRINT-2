@@ -17,10 +17,8 @@
     </div>
     <div style="display: flex; align-items: center; gap: 20px;">
 
-     <button class="btn-1" onclick="window.location.href='index.html'">Início</button>
-     <button class="btn-1" onclick="window.location.href='calculadora.html'">Calculadora</button>
-     <button class="btn-1" onclick="window.location.href='cadastroPge.html'">Sobre nós</button>
-     <button class="btn-1" onclick="window.location.href='cadastroPge.html'">Contato</button>
+     <button class="btn-1" onclick="window.location.href='index.html'">Voltar para o início</button>
+     
 
         <!-- <button class="btn-entre" onclick="window.location.href='loginPage.html'">Entre</button>
         <button class="btn-cadastro" onclick="window.location.href='cadastroPage.html'">Cadastre-se</button> -->
@@ -29,18 +27,18 @@
 
     <div class="kpi-container">
         <div class="kpi-indicadores">concentração atual
-            <p class="kpi-valor">420 ppm</p>
+            <p class="kpi-valor">1000 ppm
             <p class="kpi-subtexto">ultimo registro: 17:00</p>
         </div>
 
         <div class="kpi-indicadores">média do dia
-            <p class="kpi-valor">484 ppm</p>
+            <p class="kpi-valor">780 ppm
             <p class="kpi-subtexto">dentro do limite</p>
 
         </div>
         <div class="kpi-indicadores">alertas hoje
-            <p class="kpi-valor">3</p>
-            <p class="kpi-subtexto">acima de 1000 ppm</p>
+            <p class="kpi-valor">1</p>
+            <p class="kpi-subtexto">acima de 5000 ppm</p>
         </div>
     </div>
 
@@ -65,16 +63,19 @@
                 label: 'Concentração de gás (PPM)',
                 backgroundColor: 'rgb(151, 196, 89)',
                 borderColor: 'rgb(151, 196, 89)',
-                data: [420, 455, 500, 512, 498, 530]
+                data: [1000,2009,3788,6022,3087, 1000]
             }
         ]
     };
 
-    const config = {
-        type: 'line',
-        data: data_dados,
-        options: {}
+   const config = {
+    type: 'line',
+    data: data_dados,
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
     }
+}
 
     const labels2 = [
         'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'
@@ -87,16 +88,19 @@
                 label: 'Pico de gás (PPM)',
                 backgroundColor: 'rgb(151, 196, 89)',
                 borderColor: 'rgb(151, 196, 89)',
-                data: [550, 420, 575, 490, 465, 505]
+                data: [5500, 6045, 5700, 4900, 4650, 5050]
             }
         ]
     };
 
     const config2 = {
-        type: 'bar',
-        data: data2,
-        options: {}
+    type: 'bar',
+    data: data2,
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
     }
+}
 
     const myChart = new Chart(
         document.getElementById('myChart'), config
