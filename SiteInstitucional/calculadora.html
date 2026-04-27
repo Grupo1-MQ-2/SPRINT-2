@@ -110,13 +110,13 @@
       // Chama a validação. Se der erro (retornar false) nem segue
       if (!validacoes()) return;
 
-      let areaTotalHectares = Number(inputAreaHectares.value);
+      let totalHectares = Number(inputAreaHectares.value);
       let perimetroMetros = Number(inputPerimetroMetros.value);
 
       let valorPlano = 15;
       let nomePlano = "Trimestral";
       let valorPrejuizoPorHectare = 12500;
-      let patrimonioProtegido = areaTotalHectares * valorPrejuizoPorHectare;
+      let patrimonioProtegido = totalHectares * valorPrejuizoPorHectare;
       
       let restoDivisao = perimetroMetros % 30;
       let perimetroSemResto = perimetroMetros - restoDivisao;
@@ -149,13 +149,13 @@
       // Chama a validação. Se der erro (retornar false) nem segue
       if (!validacoes()) return;
 
-      let areaTotalHectares = Number(inputAreaHectares.value);
+      let totalHectares = Number(inputAreaHectares.value);
       let perimetroMetros = Number(inputPerimetroMetros.value);
 
       let valorPlano = 10;
       let nomePlano = "Semestral";
       let valorPrejuizoPorHectare = 12500;
-      let patrimonioProtegido = areaTotalHectares * valorPrejuizoPorHectare;
+      let patrimonioProtegido = totalHectares * valorPrejuizoPorHectare;
       
       let restoDivisao = perimetroMetros % 30;
       let perimetroSemResto = perimetroMetros - restoDivisao;
@@ -188,13 +188,13 @@
       // Chama a validação. Se der erro (retornar false) nem segue
       if (!validacoes()) return;
 
-      let areaTotalHectares = Number(inputAreaHectares.value);
+      let totalHectares = Number(inputAreaHectares.value);
       let perimetroMetros = Number(inputPerimetroMetros.value);
 
       let valorPlano = 8;
       let nomePlano = "Anual";
       let valorPrejuizoPorHectare = 12500;
-      let patrimonioProtegido = areaTotalHectares * valorPrejuizoPorHectare;
+      let patrimonioProtegido = totalHectares * valorPrejuizoPorHectare;
       
       let restoDivisao = perimetroMetros % 30;
       let perimetroSemResto = perimetroMetros - restoDivisao;
