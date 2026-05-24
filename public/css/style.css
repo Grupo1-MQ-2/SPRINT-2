@@ -1,0 +1,226 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #e9ecef;
+    color: #1f1e1e;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.barra-navegacao {
+    background-color: #01352c;
+    padding: 12px 0px;
+}
+
+.container-navegacao {
+    max-width: 1100px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 0 0;
+    height: 100%;
+}
+
+.logotipo img {
+    height: 90%;
+    max-height: 60px;
+    width: auto;
+    display: block;
+}
+
+.menu-lista {
+    display: flex;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.menu-item {
+    margin-left: 20px;
+}
+
+.link-menu,
+.link-menu-ativo {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.link-menu-ativo {
+    color: white;
+    font-weight: bold;
+}
+
+.area-principal {
+    max-width: 1100px;
+    margin: 0px auto;
+    padding: 40px 20px;
+    flex: 1;
+}
+
+.secao-apresentacao,
+.secao-contexto,
+.secao-hero-solucao,
+.fluxo-operacional {
+    margin-bottom: 60px;
+    border-bottom: 2px solid #dddddd;
+    padding-bottom: 40px;
+}
+
+.flex-container,
+.cartao-problema,
+.bloco-etapa,
+.bloco-etapa-invertido {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.secao-hero-solucao {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/canavial.webp');
+    background-size: cover;
+    background-position: center;
+    min-height: 85vh;
+    padding: 0px 40px;
+    display: flex;
+    align-items: center;
+}
+
+.secao-hero-solucao .manchete-principal {
+    color: #ffffff;
+}
+
+.secao-hero-solucao .paragrafo-comum {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.cartao-problema {
+    background-color: #01352c;
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.bloco-etapa {
+    background-color: #97C459;
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.bloco-etapa-invertido {
+    flex-direction: row-reverse;
+    background-color: #97C459;
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.coluna-texto,
+.texto-do-problema,
+.texto-etapa {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.bloco-etapa-invertido .texto-etapa {
+    margin-right: 0px;
+    margin-left: 20px;
+}
+
+.coluna-imagem,
+.imagem-do-problema,
+.imagem-etapa {
+    flex: 1;
+}
+
+.imagem-responsivel {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.manchete-principal {
+    font-size: 42px;
+    color: #27500A;
+    margin: 10px 0px 20px 0px;
+}
+
+h1 span {
+    color: #97C459;
+}
+
+.subtitulo-secao {
+    font-size: 28px;
+    color: #3B6D11;
+    margin: 0px 0px 20px 0px;
+}
+
+.etiqueta-verde {
+    color: #97C459;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0px;
+}
+
+.paragrafo-comum {
+    font-size: 18px;
+    margin: 0px 0px 15px 0px;
+    color: #444444;
+}
+
+.p1{
+    color: #ffffff;
+}
+
+.sub1{
+    color: #97C459 ;
+}
+
+.alinhamento-central {
+    text-align: center;
+}
+
+.grade-cards {
+    display: flex;
+    margin-top: 30px;
+}
+
+.item-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    flex: 1;
+    border-top: 5px solid #97C459;
+    margin: 0px 10px;
+}
+
+.titulo-card {
+    color: #3B6D11;
+    margin: 0px 0px 15px 0px;
+}
+
+.texto-do-card {
+    font-size: 15px;
+    margin: 0px;
+}
+
+.rodape-final {
+    background-color: #01352c;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 0px;
+}
+
+.texto-copyright {
+    margin: 0px;
+}
+
+.titulo-etapa {
+    font-size: 22px;
+    color: #01352c;
+    margin-bottom: 10px;
+}
+.link-menu:hover {
+    color: #97C459;
+}
