@@ -6,14 +6,22 @@ var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 // A sintaxe do operador ternário é: condição ? valor_se_verdadeiro : valor_se_falso
 
 require("dotenv").config({ path: caminho_env });
+require("dotenv").config(); // bobIA
+
 
 var express = require("express");
+const app = express();
+const PORTA_SERVIDOR = process.env.PORTA; // bobIA
+const { GoogleGenAI } = require("@google/genai"); // bobIA
+const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE }); // bobIA
+
+
+
 var cors = require("cors");
 var path = require("path");
-var PORTA_APP = process.env.APP_PORT;
-var HOST_APP = process.env.APP_HOST;
 
-var app = express();
+var PORTA_APP = process.env.APP_PORT; // bobIA
+var HOST_APP = process.env.APP_HOST; // bobIA
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
@@ -51,3 +59,53 @@ app.listen(PORTA_APP, function () {
     \tSe .:producao:. você está se conectando ao banco remoto. \n\n
     \t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'\n\n`);
 });
+
+app.listen(PORTA_SERVIDOR, () => {
+    console.info(
+        `
+        ######                ###    #    
+        #     #  ####  #####   #    # #   
+        #     # #    # #    #  #   #   #  
+        ######  #    # #####   #  #     # 
+        #     # #    # #    #  #  ####### 
+        #     # #    # #    #  #  #     # 
+        ######   ####  #####  ### #     # 
+        `
+    );
+    console.info(`A API BobIA iniciada, acesse http://localhost:${PORTA_SERVIDOR}`);
+});
+
+app.post("/perguntar", async (req, res) => {
+    const pergunta = req.body.pergunta;
+
+    try {
+        const resultado = await gerarResposta(pergunta);
+        res.json({ resultado });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+
+});
+
+// função para gerar respostas usando o gemini
+async function gerarResposta(mensagem) {
+
+    try {
+        // gerando conteúdo com base na pergunta
+        const modeloIA = chatIA.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: 
+            `${mensagem}`
+        });
+        const resposta = (await modeloIA).text;
+        const tokens = (await modeloIA).usageMetadata;
+
+        console.log(resposta);
+        console.log("Uso de Tokens:", tokens);
+
+        return resposta;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}

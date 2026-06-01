@@ -2,16 +2,17 @@
   "name": "sprint-2",
   "version": "1.0.0",
   "description": "- Lara Willi Binotti\r - Raphael de Oliveira\r - Matheus Bernardino Gomes\r - Yuri Garcia Pardinho\r - Isabelle Oliveira Schmidt\r - Guilherme Ferreira Moura\r - Júlia Silva de Lemos",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Grupo1-MQ-2/SPRINT-2.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "@MatheusFerreiraMatos @gfalexander @miranda500",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
@@ -21,6 +22,8 @@
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "mysql2": "^3.22.3"
+    "mysql2": "^3.22.3",
+    "@google/genai": "^0.14.1",
+    "dotenv": "^16.4.5"
   }
 }
