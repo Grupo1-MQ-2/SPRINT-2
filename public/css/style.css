@@ -13,6 +13,7 @@ body {
     background-color: #01352c;
 }
 
+
 .container-navegacao {
     font-size: 21px;
     display: flex;
@@ -59,7 +60,7 @@ body {
     max-width: 1100px;
     margin: 0px auto;
     padding: 40px 20px;
-    flex: 1;
+    flex: 2;
 }
 
 .secao-apresentacao,
@@ -80,15 +81,7 @@ body {
     margin-bottom: 40px;
 }
 
-.secao-hero-solucao {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/imgs/Lavoura-Cana-de-acucar-alimentos.jpg");
-    background-size: cover;
-    background-position: center;
-    min-height: 85vh;
-    padding: 0px 40px;
-    display: flex;
-    align-items: center;
-}
+
 
 .secao-hero-solucao .manchete-principal {
     color: #ffffff;
@@ -118,11 +111,9 @@ body {
     padding: 30px;
 }
 
-.coluna-texto,
-.texto-do-problema,
-.texto-etapa {
-    flex: 1;
-    margin-right: 20px;
+.coluna-texto{
+   padding-right: 50px;
+   
 }
 
 .bloco-etapa-invertido .texto-etapa {
@@ -130,21 +121,26 @@ body {
     margin-left: 20px;
 }
 
-.coluna-imagem,
-.imagem-do-problema,
-.imagem-etapa {
-    flex: 1;
+.coluna-imagem {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 5;
+    max-width: 100%;
+    margin-left: auto;
+
+}
+.imagem-responsivel{
+    width: 800px;
+    height: auto;
 }
 
-.imagem-responsivel {
-    width: 100%;
-    border-radius: 12px;
-}
+
 
 .manchete-principal {
-    font-size: 42px;
+    font-size: 60px;
     color: #27500A;
-    margin: 10px 0px 20px 0px;
+    margin: 20px 0px;
 }
 
 h1 span {
@@ -165,7 +161,7 @@ h1 span {
 }
 
 .paragrafo-comum {
-    font-size: 18px;
+    font-size: 25px;
     margin: 0px 0px 15px 0px;
     color: black;
 }
@@ -279,51 +275,34 @@ h1 span {
 }
 
 .btn-principal {
-    margin-top: 20px;
+    background: transparent;
+    color: #01352c;
+    border: 1px solid #01352c;
 
-    background: rgba(255, 255, 255, 0.45);
-
-
-    border-radius: 10px;
+    padding: 20px 36px;
 
     display: flex;
     justify-content: space-between;
 
-    padding: 20px;
-    gap: 20px;
+    border-radius: 18px;
+    font-size: 16px;
 
-    color: #27500A;
+    cursor: pointer;
+    transition: 0.3s;
 
+    min-width: 170px;
+    width: auto;
 
-    border-style: solid;
     border-color: #01352c;
+
+    text-decoration: none;
 
 
 
 }
 
-.btn-secundario {
-    margin-top: 20px;
-
-    background: rgba(255, 255, 255, 0.45);
-
-
-    border-radius: 10px;
-
-    display: flex;
-    justify-content: flex-end;
-
-    padding: 20px;
-    gap: 20px;
-
-    color: #27500A;
-
-
-    border-style: solid;
-    border-color: #01352c;
-
-
-
+.btn-principal:hover {
+    background: rgba(120, 120, 138, 0.09);
 }
 
 
@@ -366,6 +345,8 @@ h1 span {
 
     color: #4a4a4a;
 }
-.titulo-diferenciais{
-    color:#27500A;
+
+.titulo-diferenciais {
+    color: #27500A;
 }
+
