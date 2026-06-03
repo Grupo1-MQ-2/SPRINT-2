@@ -59,8 +59,7 @@ body {
 .area-principal {
     max-width: 1100px;
     margin: 0px auto;
-    padding: 40px 20px;
-    flex: 2;
+    padding: 30px 10px;
 }
 
 .secao-apresentacao,
@@ -112,8 +111,9 @@ body {
 }
 
 .coluna-texto{
-   padding-right: 50px;
-   
+   display: flex;
+   flex-direction: column;
+   align-items: start;
 }
 
 .bloco-etapa-invertido .texto-etapa {
@@ -124,21 +124,17 @@ body {
 .coluna-imagem {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    flex: 5;
-    max-width: 100%;
-    margin-left: auto;
-
+    margin-left: 50px;
 }
 .imagem-responsivel{
-    width: 800px;
+    width: 650px;
     height: auto;
 }
 
 
 
 .manchete-principal {
-    font-size: 60px;
+    font-size: 50px;
     color: #27500A;
     margin: 20px 0px;
 }
