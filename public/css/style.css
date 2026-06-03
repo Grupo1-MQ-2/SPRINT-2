@@ -56,19 +56,13 @@ body {
     font-weight: bold;
 }
 
-.area-principal {
-    max-width: 1100px;
-    margin: 0px auto;
-    padding: 30px 10px;
-}
-
 .secao-apresentacao,
 .secao-contexto,
 .secao-hero-solucao,
 .fluxo-operacional {
-    margin-bottom: 60px;
+    margin: 60px;
     border-bottom: 2px solid #dddddd;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
 }
 
 .flex-container,
@@ -77,7 +71,7 @@ body {
 .bloco-etapa-invertido {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    margin: 40px;
 }
 
 
@@ -144,6 +138,8 @@ h1 span {
 }
 
 .subtitulo-secao {
+    display: flex;
+    justify-content: center;
     font-size: 28px;
     color: #3B6D11;
     margin: 0px 0px 20px 0px;
@@ -220,7 +216,7 @@ h1 span {
 }
 
 .cards {
-    margin-top: 80px;
+    margin: 80px;
 
     background: white;
     backdrop-filter: blur(10px);
@@ -274,11 +270,10 @@ h1 span {
     background: transparent;
     color: #01352c;
     border: 1px solid #01352c;
+    justify-content: center;
 
     padding: 20px 36px;
-
     display: flex;
-    justify-content: space-between;
 
     border-radius: 18px;
     font-size: 16px;
@@ -292,9 +287,6 @@ h1 span {
     border-color: #01352c;
 
     text-decoration: none;
-
-
-
 }
 
 .btn-principal:hover {
@@ -310,7 +302,7 @@ h1 span {
 }
 
 .card-diferencial {
-    margin-top: 80px;
+    margin: 80px;
 
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(10px);
@@ -318,7 +310,8 @@ h1 span {
     border-radius: 85px;
 
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
 
     padding: 50px;
     gap: 70px;
@@ -343,6 +336,9 @@ h1 span {
 }
 
 .titulo-diferenciais {
+    display: flex;
     color: #27500A;
+    align-items: center;
+    justify-content: center;
 }
 
