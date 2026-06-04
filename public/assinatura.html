@@ -2,12 +2,91 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canalytics</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canalytics</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    
+    <nav class="barra-navegacao">
+        <div class="container-navegacao">
+            <a href="index.html" class="logotipo">
+                <img src="img/CanalyticsLogo.png" alt="logotipo">
+            </a>
+            <ul class="menu-lista">
+                <li class="menu-item"><a href="index.html" class="link-menu-ativo">Início</a></li>
+                <li class="menu-item"><a href="solucao.html" class="link-menu">Solução</a></li>
+                <li class="menu-item"><a href="calculadora.html" class="link-menu">Simulador financeiro</a></li>
+                <li class="menu-item"><a href="telaAcesso.html" class="link-menu">Acesso</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="navbar">
+        <div class="titulo">
+            <h2 style=" font-size: 38px; color: #01352c; "> Assinar Serviço </h2>
+        </div>
+    </div>
+
+    <div class="main">
+
+        <div class="card_responsavel">
+            <label style="font-size: 22px; color: #01352c" ;>Razão Social:</label>
+            <input type="text" id="ipt_razao_social" class="input" placeholder="*Arcos Dourados Comércio de Alimentos S.A*">
+
+            <label style="font-size: 22px; color: #01352c" ;>CNPJ:</label>
+            <input type="number" id="ipt_CNPJ" class="input" placeholder="12345678000195">
+
+            <label style="font-size: 22px; color: #01352c" ;>Ramo de atividade:</label>
+            <input type="text" id="ipt_ramoAtividade" class="input" placeholder="Agricultura">
+        </div>
+
+        <div class="card_empresa">
+            <label style="font-size: 22px; color: #01352c" ;>CEP:</label>
+            <input type="number" id="inputPerimetroMetros" class="input" placeholder="Ex: 4000">
+
+            <label style="font-size: 22px; color: #01352c" ;>Estado:</label>
+            <input type="number" id="inputPerimetroMetros" class="input" placeholder="Ex: 4000">
+
+            <label style="font-size: 22px; color: #01352c" ;>Cidade:</label>
+            <input type="number" id="inputPerimetroMetros" class="input" placeholder="Ex: 4000">
+
+            <label style="font-size: 22px; color: #01352c" ;>Rua:</label>
+            <input type="number" id="inputPerimetroMetros" class="input" placeholder="Ex: 4000">
+
+            <label style="font-size: 22px; color: #01352c" ;>Número:</label>
+            <input type="number" id="inputPerimetroMetros" class="input" placeholder="Ex: 4000">
+        </div>
+
+        <br>
+
+        <input type="number" id="inputPerimetroMetros" class="input" placeholder="Ex: 4000">
+
+        <br><br>
+
+        <div class="button">
+            <button class="btn" onclick="calcularTrimestral()">Plano Trimestral (Econômico)</button>
+
+            <button class="btn" onclick="calcularSemestral()">Plano Semestral (Recomendado)</button>
+
+            <button class="btn" onclick="calcularAnual()">Plano Anual (Premium)</button>
+        </div>
+        <br><br>
+        <div id="caixa" class="caixa" style="display: none;">
+            <div class="mensagens">
+                <div id="divPatrimonioRisco"></div>
+                <br>
+                <div id="divResultadoInvestimento"></div>
+                <br>
+            </div>
+            <button class="btn_assinar" onclick="location.window.href='assinatura.html'">Assinar</button>
+        </div>
+    </div>
+
+    <footer class="rodape-final">
+        <p class="texto-copyright">© 2026 Projeto Canalytics - São Paulo Tech School</p>
+    </footer>
 </body>
+
 </html>
