@@ -62,6 +62,7 @@
         <div id="divResultadoInvestimento"></div>
         <br>
       </div>
+      <button class="btn_assinar" onclick="location.window.href=''">Assinar</button>
     </div>
   </div>
 
@@ -73,41 +74,33 @@
 </html>
 <script>
   function validacoes() {
-    caixa.style.display = "block"
     divPatrimonioRisco.innerHTML = "";
     divResultadoInvestimento.innerHTML = "";
-
-    const camposVazios = inputAreaHectares.value == "" || inputPerimetroMetros.value == "";
-
-    if (camposVazios) {
-      alert("Os campos de área e perímetro são obrigatórios.");
-      return false;
-    }
-
+  
     let area = Number(inputAreaHectares.value);
     let perimetro = Number(inputPerimetroMetros.value);
-
     const nMin = 0;
     const areaMax = 500000;
     const perimMax = 500000;
-
+    const camposVazios = inputAreaHectares.value == "" || inputPerimetroMetros.value == "";
     //(Letras, Negativos ou Zero)
     const valoresInvalidos = isNaN(area) || isNaN(perimetro) || area <= nMin || perimetro <= nMin;
-
-    if (valoresInvalidos) {
-      alert("Valores devem ser numéricos e maiores que zero.");
-      return false;
-    }
-
     // Limites
     const limitesExcedidos = area > areaMax || perimetro > perimMax;
-    if (limitesExcedidos) {
+    
+    if (camposVazios) {
+      alert("Os campos de área e perímetro são obrigatórios.");
+      return false;
+    } else if (valoresInvalidos) {
+      alert("Valores devem ser numéricos e maiores que zero.");
+      return false;
+    } else if (limitesExcedidos) {
       alert("Os valores excedem o limite máximo permitido.");
       return false;
+    } else {
+      caixa.style.display = "flex"
+      return true;
     }
-
-    // Se chegou até aqui, todas as validações deram true pae
-    return true;
   }
 
   function calcularTrimestral() {
