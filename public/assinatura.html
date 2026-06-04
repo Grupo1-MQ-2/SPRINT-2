@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canalytics</title>
+    <title>Assinatura - Canalytics</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/CANALYTICS.png">
 </head>
@@ -62,9 +62,6 @@
 
                 <label style="font-size: 22px; color: #01352c">CNPJ:</label>
                 <input type="number" id="ipt_CNPJ" class="input" placeholder="12345678000195"><br><br>
-
-                <label style="font-size: 22px; color: #01352c">Ramo de atividade:</label>
-                <input type="text" id="ipt_ramoAtividade" class="input" placeholder="Agricultura"><br><br>
             </div>
         </div>
 
@@ -73,15 +70,15 @@
 
             <div class="conteudo_details">
                 <div class="button">
-                    <button class="btn_plano" onclick="calcularTrimestral()">
+                    <button class="btn_plano">
                         Plano Trimestral (Econômico)
                     </button>
 
-                    <button class="btn_plano" onclick="calcularSemestral()">
+                    <button class="btn_plano">
                         Plano Semestral (Recomendado)
                     </button>
 
-                    <button class="btn_plano" onclick="calcularAnual()">
+                    <button class="btn_plano">
                         Plano Anual (Premium)
                     </button>
                 </div>
@@ -139,6 +136,57 @@
     botao.addEventListener('click', () => {
         botao.classList.toggle('ativo');
     });
+
+    function Assinar() {
+        if (!verificar()) {
+            return;
+        }
+
+        alert("Assinatura realizada com sucesso!");
+    }
+
+
+    function verificar() {
+        if (ipt_CEP.value == "") {
+            alert("Preencha o CEP");
+            return false;
+        } else if (ipt_estado.value == "") {
+            alert("Preencha o Estado");
+            return false;
+        } else if (ipt_cidade.value == "") {
+            alert("Preencha a Cidade");
+            return false;
+        } else if (ipt_rua.value == "") {
+            alert("Preencha a Rua");
+            return false;
+        } else if (ipt_numero.value == "") {
+            alert("Preencha o Número");
+            return false;
+        } else if (ipt_razao_social.value == "") {
+            alert("Preencha a Razão Social");
+            return false;
+        } else if (ipt_CNPJ.value == "") {
+            alert("Preencha o CNPJ");
+            return false;
+        } else if (ipt_nomeCartao.value == "") {
+            alert("Preencha o Nome do titular do cartão");
+            return false;
+        } else if (ipt_numeroCartao.value == "") {
+            alert("Preencha o número do cartão");
+            return false;
+        } else if (ipt_dataCartao.value == "") {
+            alert("Preencha a data de validade do cartão");
+            return false;
+        } else if (ipt_CVVCartao.value == "") {
+            alert("Preencha o CVV do cartão");
+            return false;
+        }
+
+        return true;
+    }
+
+    
+    
 </script>
 
 </html>
