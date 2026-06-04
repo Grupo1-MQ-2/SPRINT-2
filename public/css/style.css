@@ -480,3 +480,55 @@ h1 span {
     color: #333;
     line-height: 1.6;
 }
+
+/* 
+   ASSINATURA (assinatura.html)
+*/
+
+.accordion-card {
+    background-color: white;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.accordion {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background: white;
+    color: #01352c;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+}
+
+.accordion::after {
+    content: "▼";
+    float: right;
+    transition: transform .3s;
+}
+
+.accordion.ativo::after {
+    transform: rotate(180deg);
+}
+
+.conteudo_details {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    opacity: 0;
+
+    transition:
+        max-height .5s ease,
+        opacity .3s ease,
+        padding .3s ease;
+}
+
+.conteudo_details.ativo {
+    max-height: 1000px;
+    opacity: 1;
+    padding: 20px;
+}
