@@ -2,228 +2,228 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Canalytics</title>
-    <link rel="stylesheet" href="css/calcstyle.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Canalytics</title>
+  <link rel="stylesheet" href="css/calcstyle.css">
 </head>
 
 <body class="body">
-      <nav class="barra-navegacao">
-        <div class="container-navegacao">
-            <a href="index.html" class="logotipo">
-                <img src="img/CanalyticsLogo.png" alt="logotipo" style="height: 40px; width: auto;">
-            </a>
-            <ul class="menu-lista">
-                <li class="menu-item"><a href="index.html" class="link-menu">Início</a></li>
-                <li class="menu-item"><a href="solucao.html" class="link-menu">Solução</a></li>
-                <li class="menu-item"><a href="calculadora.html" class="link-menu-ativo">Simulador financeiro</a></li>
-                <li class="menu-item"><a href="telaAcesso.html" class="link-menu">Acesso</a></li>
-            </ul>
-        </div>
-    </nav>
+  <nav class="barra-navegacao">
+    <div class="container-navegacao">
+      <a href="index.html" class="logotipo">
+        <img src="img/CanalyticsLogo.png" alt="logotipo">
+      </a>
+      <ul class="menu-lista">
+        <li class="menu-item"><a href="index.html" class="link-menu-ativo">Início</a></li>
+        <li class="menu-item"><a href="solucao.html" class="link-menu">Solução</a></li>
+        <li class="menu-item"><a href="calculadora.html" class="link-menu">Simulador financeiro</a></li>
+        <li class="menu-item"><a href="telaAcesso.html" class="link-menu">Acesso</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <div class="navbar">
-            <div class="titulo">
-    <h2 style=" font-size: 38px; color: #01352c; "> Simulador Financeiro </h2>
-     <div class="pequeno">
-    <h2 style="color: #01352c;">Estime o impacto financeiro de um incêndio na sua plantação</h2>
+  <div class="navbar">
+    <div class="titulo">
+      <h2 style=" font-size: 38px; color: #01352c; "> Simulador Financeiro </h2>
+      <div class="pequeno">
+        <h2 style="color: #01352c;">Estime o impacto financeiro de um incêndio na sua plantação</h2>
+      </div>
     </div>
-    </div>
-    </div>
-    <div class="main">
-    <label style="font-size: 22px; color: #01352c";>Informe a quantidade de hectares da sua cultura de cana:</label>
-<br>
-<br>
-    <input type="number" id="inputAreaHectares" class="input" placeholder="Ex: 10">
-<br>
-<br>
+  </div>
+  <div class="main">
+    <label style="font-size: 22px; color: #01352c" ;>Informe a quantidade de hectares da sua cultura de cana:</label>
     <br>
-    <label style="font-size: 22px; color: #01352c";>Informe o perímetro da área da plantação (Em metros):</label>
-<br>
+    <br>
+    <input type="number" id="inputAreaHectares" class="input" placeholder="Ex: 10">
+
+    <br><br><br>
+
+    <label style="font-size: 22px; color: #01352c" ;>Informe o perímetro da área da plantação (Em metros):</label>
+
+    <br>
+
     <input type="number" id="inputPerimetroMetros" class="input" placeholder="Ex: 4000">
-<br>
-<br>
 
-<div class="button">
-    <button class="btn" onclick="calcularTrimestral()">Plano Trimestral (Econômico)</button>
-    
-    <button class="btn" onclick="calcularSemestral()">Plano Semestral (Recomendado)</button>
+    <br><br>
 
-    <button class="btn" onclick="calcularAnual()">Plano Anual (Premium)</button>
+    <div class="button">
+      <button class="btn" onclick="calcularTrimestral()">Plano Trimestral (Econômico)</button>
+
+      <button class="btn" onclick="calcularSemestral()">Plano Semestral (Recomendado)</button>
+
+      <button class="btn" onclick="calcularAnual()">Plano Anual (Premium)</button>
     </div>
     <br><br>
     <div id="caixa" class="caixa" style="display: none;">
-    <div class="mensagens">
-    <div id="divPatrimonioRisco" ></div>
-    <br>
-    <div id="divResultadoInvestimento" ></div>
-    <br>
+      <div class="mensagens">
+        <div id="divPatrimonioRisco"></div>
+        <br>
+        <div id="divResultadoInvestimento"></div>
+        <br>
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
 
-       <footer class="rodape-final">
-        <p class="texto-copyright">© 2026 Projeto Canalytics - São Paulo Tech School</p>
-    </footer>
+  <footer class="rodape-final">
+    <p class="texto-copyright">© 2026 Projeto Canalytics - São Paulo Tech School</p>
+  </footer>
 </body>
 
-<script>
-    function validacoes() {
-      caixa.style.display="block"
-      divPatrimonioRisco.innerHTML = "";
-      divResultadoInvestimento.innerHTML = "";
-
-      const camposVazios = inputAreaHectares.value == "" || inputPerimetroMetros.value == "";
-
-      if (camposVazios) {
-        alert("Os campos de área e perímetro são obrigatórios.");
-        return false;
-      }
-
-      let area = Number(inputAreaHectares.value);
-      let perimetro = Number(inputPerimetroMetros.value);
-
-      const nMin = 0;
-      const areaMax = 500000;
-      const perimMax = 500000;
-
-      //(Letras, Negativos ou Zero)
-      const valoresInvalidos = isNaN(area) || isNaN(perimetro) || area <= nMin || perimetro <= nMin;
-
-      if (valoresInvalidos) {
-        alert("Valores devem ser numéricos e maiores que zero.");
-        return false;
-      }
-
-      // Limites
-      const limitesExcedidos = area > areaMax || perimetro > perimMax;
-      if (limitesExcedidos) {
-        alert("Os valores excedem o limite máximo permitido.");
-        return false;
-      }
-
-      // Se chegou até aqui, todas as validações deram true pae
-      return true;
-    }
-
-    function calcularTrimestral() {
-      // Chama a validação. Se der erro (retornar false) nem segue
-      if (!validacoes()) return;
-
-      let totalHectares = Number(inputAreaHectares.value);
-      let perimetroMetros = Number(inputPerimetroMetros.value);
-
-      let valorPlano = 15;
-      let nomePlano = "Trimestral";
-      let valorPrejuizoPorHectare = 12500;
-      let patrimonioProtegido = totalHectares * valorPrejuizoPorHectare;
-      
-      let restoDivisao = perimetroMetros % 30;
-      let perimetroSemResto = perimetroMetros - restoDivisao;
-      let quantidadeSensores = perimetroSemResto / 30;
-
-      if (restoDivisao > 0) {
-        quantidadeSensores = quantidadeSensores + 1;
-      }
-
-      if (quantidadeSensores < 1) {
-        quantidadeSensores = 1;
-      }
-
-      let custoInvestimento = quantidadeSensores * valorPlano;
-
-      let patrimonioFormatado = patrimonioProtegido.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      });
-      let investimentoFormatado = custoInvestimento.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      });
-
-      divPatrimonioRisco.innerHTML = `<b>Atenção:</b> Você possui aproximadamente <b>${patrimonioFormatado}</b> em cana-de-açúcar desprotegida e vulnerável a incêndios.`;
-      divResultadoInvestimento.innerHTML = `Para criar uma barreira de proteção no seu perímetro de risco, são necessários <b>${quantidadeSensores} sensores</b>.<br><br>Você selecionou o plano <b>${nomePlano}</b> e o valor total do investimento para blindar sua fazenda é de apenas <b>${investimentoFormatado}</b> mensalmente.`;
-    }
-
-    function calcularSemestral() {
-      // Chama a validação. Se der erro (retornar false) nem segue
-      if (!validacoes()) return;
-
-      let totalHectares = Number(inputAreaHectares.value);
-      let perimetroMetros = Number(inputPerimetroMetros.value);
-
-      let valorPlano = 10;
-      let nomePlano = "Semestral";
-      let valorPrejuizoPorHectare = 12500;
-      let patrimonioProtegido = totalHectares * valorPrejuizoPorHectare;
-      
-      let restoDivisao = perimetroMetros % 30;
-      let perimetroSemResto = perimetroMetros - restoDivisao;
-      let quantidadeSensores = perimetroSemResto / 30;
-
-      if (restoDivisao > 0) {
-        quantidadeSensores = quantidadeSensores + 1;
-      }
-
-      if (quantidadeSensores < 1) {
-        quantidadeSensores = 1;
-      }
-
-      let custoInvestimento = quantidadeSensores * valorPlano;
-
-      let patrimonioFormatado = patrimonioProtegido.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      });
-      let investimentoFormatado = custoInvestimento.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      });
-
-      divPatrimonioRisco.innerHTML = `<b>Atenção:</b> Você possui aproximadamente <b>${patrimonioFormatado}</b> em cana-de-açúcar desprotegida e vulnerável a incêndios.`;
-      divResultadoInvestimento.innerHTML = `Para criar uma barreira de proteção no seu perímetro de risco, são necessários <b>${quantidadeSensores} sensores</b>.<br><br>Você selecionou o plano <b>${nomePlano}</b> e o valor total do investimento para blindar sua fazenda é de apenas <b>${investimentoFormatado}</b> mensalmente.`;
-    }
-
-    function calcularAnual() {
-      // Chama a validação. Se der erro (retornar false) nem segue
-      if (!validacoes()) return;
-
-      let totalHectares = Number(inputAreaHectares.value);
-      let perimetroMetros = Number(inputPerimetroMetros.value);
-
-      let valorPlano = 8;
-      let nomePlano = "Anual";
-      let valorPrejuizoPorHectare = 12500;
-      let patrimonioProtegido = totalHectares * valorPrejuizoPorHectare;
-      
-      let restoDivisao = perimetroMetros % 30;
-      let perimetroSemResto = perimetroMetros - restoDivisao;
-      let quantidadeSensores = perimetroSemResto / 30;
-
-      if (restoDivisao > 0) {
-        quantidadeSensores = quantidadeSensores + 1;
-      }
-
-      if (quantidadeSensores < 1) {
-        quantidadeSensores = 1;
-      }
-
-      let custoInvestimento = quantidadeSensores * valorPlano;
-
-      let patrimonioFormatado = patrimonioProtegido.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      });
-      let investimentoFormatado = custoInvestimento.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      });
-
-      divPatrimonioRisco.innerHTML = `<b>Atenção:</b> Você possui aproximadamente <b>${patrimonioFormatado}</b> em cana-de-açúcar desprotegida e vulnerável a incêndios.`;
-      divResultadoInvestimento.innerHTML = `Para criar uma barreira de proteção no seu perímetro de risco, são necessários <b>${quantidadeSensores} sensores</b>.<br><br>Você selecionou o plano <b>${nomePlano}</b> e o valor total do investimento para blindar sua fazenda é de apenas <b>${investimentoFormatado}</b> mensalmente.`;
-    }
-  </script>
-
-
 </html>
+<script>
+  function validacoes() {
+    caixa.style.display = "block"
+    divPatrimonioRisco.innerHTML = "";
+    divResultadoInvestimento.innerHTML = "";
+
+    const camposVazios = inputAreaHectares.value == "" || inputPerimetroMetros.value == "";
+
+    if (camposVazios) {
+      alert("Os campos de área e perímetro são obrigatórios.");
+      return false;
+    }
+
+    let area = Number(inputAreaHectares.value);
+    let perimetro = Number(inputPerimetroMetros.value);
+
+    const nMin = 0;
+    const areaMax = 500000;
+    const perimMax = 500000;
+
+    //(Letras, Negativos ou Zero)
+    const valoresInvalidos = isNaN(area) || isNaN(perimetro) || area <= nMin || perimetro <= nMin;
+
+    if (valoresInvalidos) {
+      alert("Valores devem ser numéricos e maiores que zero.");
+      return false;
+    }
+
+    // Limites
+    const limitesExcedidos = area > areaMax || perimetro > perimMax;
+    if (limitesExcedidos) {
+      alert("Os valores excedem o limite máximo permitido.");
+      return false;
+    }
+
+    // Se chegou até aqui, todas as validações deram true pae
+    return true;
+  }
+
+  function calcularTrimestral() {
+    // Chama a validação. Se der erro (retornar false) nem segue
+    if (!validacoes()) return;
+
+    let totalHectares = Number(inputAreaHectares.value);
+    let perimetroMetros = Number(inputPerimetroMetros.value);
+
+    let valorPlano = 15;
+    let nomePlano = "Trimestral";
+    let valorPrejuizoPorHectare = 12500;
+    let patrimonioProtegido = totalHectares * valorPrejuizoPorHectare;
+
+    let restoDivisao = perimetroMetros % 30;
+    let perimetroSemResto = perimetroMetros - restoDivisao;
+    let quantidadeSensores = perimetroSemResto / 30;
+
+    if (restoDivisao > 0) {
+      quantidadeSensores = quantidadeSensores + 1;
+    }
+
+    if (quantidadeSensores < 1) {
+      quantidadeSensores = 1;
+    }
+
+    let custoInvestimento = quantidadeSensores * valorPlano;
+
+    let patrimonioFormatado = patrimonioProtegido.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    let investimentoFormatado = custoInvestimento.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+
+    divPatrimonioRisco.innerHTML = `<b>Atenção:</b> Você possui aproximadamente <b>${patrimonioFormatado}</b> em cana-de-açúcar desprotegida e vulnerável a incêndios.`;
+    divResultadoInvestimento.innerHTML = `Para criar uma barreira de proteção no seu perímetro de risco, são necessários <b>${quantidadeSensores} sensores</b>.<br><br>Você selecionou o plano <b>${nomePlano}</b> e o valor total do investimento para blindar sua fazenda é de apenas <b>${investimentoFormatado}</b> mensalmente.`;
+  }
+
+  function calcularSemestral() {
+    // Chama a validação. Se der erro (retornar false) nem segue
+    if (!validacoes()) return;
+
+    let totalHectares = Number(inputAreaHectares.value);
+    let perimetroMetros = Number(inputPerimetroMetros.value);
+
+    let valorPlano = 10;
+    let nomePlano = "Semestral";
+    let valorPrejuizoPorHectare = 12500;
+    let patrimonioProtegido = totalHectares * valorPrejuizoPorHectare;
+
+    let restoDivisao = perimetroMetros % 30;
+    let perimetroSemResto = perimetroMetros - restoDivisao;
+    let quantidadeSensores = perimetroSemResto / 30;
+
+    if (restoDivisao > 0) {
+      quantidadeSensores = quantidadeSensores + 1;
+    }
+
+    if (quantidadeSensores < 1) {
+      quantidadeSensores = 1;
+    }
+
+    let custoInvestimento = quantidadeSensores * valorPlano;
+
+    let patrimonioFormatado = patrimonioProtegido.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    let investimentoFormatado = custoInvestimento.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+
+    divPatrimonioRisco.innerHTML = `<b>Atenção:</b> Você possui aproximadamente <b>${patrimonioFormatado}</b> em cana-de-açúcar desprotegida e vulnerável a incêndios.`;
+    divResultadoInvestimento.innerHTML = `Para criar uma barreira de proteção no seu perímetro de risco, são necessários <b>${quantidadeSensores} sensores</b>.<br><br>Você selecionou o plano <b>${nomePlano}</b> e o valor total do investimento para blindar sua fazenda é de apenas <b>${investimentoFormatado}</b> mensalmente.`;
+  }
+
+  function calcularAnual() {
+    // Chama a validação. Se der erro (retornar false) nem segue
+    if (!validacoes()) return;
+
+    let totalHectares = Number(inputAreaHectares.value);
+    let perimetroMetros = Number(inputPerimetroMetros.value);
+
+    let valorPlano = 8;
+    let nomePlano = "Anual";
+    let valorPrejuizoPorHectare = 12500;
+    let patrimonioProtegido = totalHectares * valorPrejuizoPorHectare;
+
+    let restoDivisao = perimetroMetros % 30;
+    let perimetroSemResto = perimetroMetros - restoDivisao;
+    let quantidadeSensores = perimetroSemResto / 30;
+
+    if (restoDivisao > 0) {
+      quantidadeSensores = quantidadeSensores + 1;
+    }
+
+    if (quantidadeSensores < 1) {
+      quantidadeSensores = 1;
+    }
+
+    let custoInvestimento = quantidadeSensores * valorPlano;
+
+    let patrimonioFormatado = patrimonioProtegido.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    let investimentoFormatado = custoInvestimento.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+
+    divPatrimonioRisco.innerHTML = `<b>Atenção:</b> Você possui aproximadamente <b>${patrimonioFormatado}</b> em cana-de-açúcar desprotegida e vulnerável a incêndios.`;
+    divResultadoInvestimento.innerHTML = `Para criar uma barreira de proteção no seu perímetro de risco, são necessários <b>${quantidadeSensores} sensores</b>.<br><br>Você selecionou o plano <b>${nomePlano}</b> e o valor total do investimento para blindar sua fazenda é de apenas <b>${investimentoFormatado}</b> mensalmente.`;
+  }
+</script>
