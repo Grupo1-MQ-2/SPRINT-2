@@ -37,12 +37,6 @@ body {
     padding: 7px;
 }
 
-.menu-item {
-    margin-left: auto;
-    margin-right: 0px;
-    padding: 10px;
-}
-
 .link-menu,
 .link-menu-ativo {
     text-decoration: none;
@@ -55,11 +49,63 @@ body {
     font-weight: bold;
 }
 
+.link-menu:hover {
+    color: #97C459;
+}
+
+.link-menu-ativo:hover {
+    color: #97C459;
+}
+
+.rodape-final {
+    background-color: #01352c;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 0px;
+}
+
+.texto-copyright {
+    margin: 0px;
+}
+
+.alinhamento-central {
+    text-align: center;
+}
+
+.etiqueta-verde {
+    color: #97C459;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0px;
+}
+
+.sub1 {
+    color: #97C459;
+}
+
+.p1 {
+    color: #ffffff;
+}
+
+/* 
+   INDEX (index.html
+*/
+
+.menu-item {
+    margin-left: auto;
+    margin-right: 0px;
+    padding: 10px;
+}
+
 .secao-apresentacao,
 .secao-contexto,
-.secao-hero-solucao,
 .fluxo-operacional {
     margin: 60px;
+    border-bottom: 2px solid #dddddd;
+    padding-bottom: 50px;
+}
+
+.secao-hero-solucao{
     border-bottom: 2px solid #dddddd;
     padding-bottom: 50px;
 }
@@ -71,17 +117,6 @@ body {
     display: flex;
     align-items: center;
     margin: 40px;
-}
-
-
-
-.secao-hero-solucao .manchete-principal {
-    color: #ffffff;
-}
-
-.secao-hero-solucao .paragrafo-comum {
-    color: #ffffff;
-    font-size: 20px;
 }
 
 .cartao-problema {
@@ -103,10 +138,10 @@ body {
     padding: 30px;
 }
 
-.coluna-texto{
-   display: flex;
-   flex-direction: column;
-   align-items: start;
+.coluna-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
 
 .bloco-etapa-invertido .texto-etapa {
@@ -119,12 +154,11 @@ body {
     justify-content: flex-end;
     margin-left: 50px;
 }
-.imagem-responsivel{
+
+.imagem-responsivel {
     width: 650px;
     height: auto;
 }
-
-
 
 .manchete-principal {
     font-size: 50px;
@@ -145,28 +179,13 @@ h1 span {
 }
 
 .etiqueta-verde {
-    color: #97C459;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0px;
+    font-size: inherit;
 }
 
 .paragrafo-comum {
     font-size: 25px;
     margin: 0px 0px 15px 0px;
     color: black;
-}
-
-.p1 {
-    color: #ffffff;
-}
-
-.sub1 {
-    color: #97C459;
-}
-
-.alinhamento-central {
-    text-align: center;
 }
 
 .grade-cards {
@@ -179,7 +198,6 @@ h1 span {
     padding: 25px;
     border-radius: 10px;
     flex: 1;
-
     margin: 0px 10px;
 }
 
@@ -193,64 +211,35 @@ h1 span {
     margin: 0px;
 }
 
-.rodape-final {
-    background-color: #01352c;
-    color: #ffffff;
-    text-align: center;
-    padding: 30px 0px;
-}
-
-.texto-copyright {
-    margin: 0px;
-}
-
 .titulo-etapa {
     font-size: 22px;
     color: white;
     margin-bottom: 10px;
 }
 
-.link-menu:hover {
-    color: #97C459;
-}
-
 .cards {
     margin: 80px;
-
     background: white;
     backdrop-filter: blur(10px);
-
     border-radius: 15px;
-
     display: flex;
     justify-content: space-between;
-
     padding: 50px;
     gap: 70px;
-
     border-style: solid;
     border-color: #3B6D11;
-
-}
-
-.cards {
     flex: 3;
 }
 
 .icon {
     width: 70px;
     height: 70px;
-
     background: rgba(140, 112, 135, 0.15);
-
     border-radius: 20px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 30px;
-
     margin-bottom: 20px;
 }
 
@@ -269,28 +258,21 @@ h1 span {
     color: #01352c;
     border: 1px solid #01352c;
     justify-content: center;
-
     padding: 20px 36px;
     display: flex;
-
     border-radius: 18px;
     font-size: 16px;
-
     cursor: pointer;
     transition: 0.3s;
-
     min-width: 170px;
     width: auto;
-
     border-color: #01352c;
-
     text-decoration: none;
 }
 
 .btn-principal:hover {
     background: rgba(120, 120, 138, 0.09);
 }
-
 
 .cta-botoes {
     width: 30%;
@@ -301,23 +283,16 @@ h1 span {
 
 .card-diferencial {
     margin: 80px;
-
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(10px);
-
     border-radius: 85px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 50px;
     gap: 70px;
-
-
     border-style: solid;
     border-color: #607B3B;
-
 }
 
 .card-diferencial h4 {
@@ -327,9 +302,7 @@ h1 span {
 }
 
 .card-diferencial p {
-
     font-size: 20px;
-
     color: #4a4a4a;
 }
 
@@ -340,3 +313,162 @@ h1 span {
     justify-content: center;
 }
 
+
+/* 
+   SOLUÇÃO (solucao.html) 
+*/
+
+.area-principal {
+    max-width: 1100px;
+    margin: 0px auto;
+    padding: 40px 20px;
+    flex: 1;
+}
+
+
+.area-principal .secao-apresentacao,
+.area-principal .secao-contexto,
+.area-principal .secao-hero-solucao,
+.area-principal .fluxo-operacional {
+    margin-bottom: 60px;
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom: 2px solid #dddddd;
+    padding-bottom: 40px;
+}
+
+
+.area-principal .flex-container,
+.area-principal .cartao-problema,
+.area-principal .bloco-etapa,
+.area-principal .bloco-etapa-invertido {
+    margin-bottom: 40px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.secao-hero-solucao {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/imgs/Lavoura-Cana-de-acucar-alimentos.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 85vh;
+    padding: 0px 40px;
+    display: flex;
+    align-items: center;
+}
+
+.secao-hero-solucao .manchete-principal {
+    color: #ffffff;
+    font-size: 42px;
+}
+
+.secao-hero-solucao .paragrafo-comum {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.coluna-texto.solucao,
+.texto-do-problema,
+.texto-etapa {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.imagem-do-problema,
+.imagem-etapa {
+    flex: 1;
+}
+
+.area-principal .imagem-responsivel {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.area-principal .subtitulo-secao {
+    display: block;
+    font-size: 28px;
+    color: #3B6D11;
+    margin: 0px 0px 20px 0px;
+}
+
+.area-principal .paragrafo-comum {
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+}
+
+.paragrafo-comum1 {
+    color: #dddddd;
+    font-size: 25px;
+}
+
+
+/* 
+   CALCULADORA (calculadora.html)
+*/
+
+.calculadora .menu-item {
+    margin-left: 20px;
+    padding: 0;
+}
+
+.navbar {
+    padding: 15px;
+    text-align: center;
+}
+
+.titulo h2 {
+    margin: 5px 0;
+}
+
+.main {
+    margin: auto;
+    padding: 40px;
+    flex: 2;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.button {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 15px;
+    cursor: pointer;
+    border: 1px solid #01352c;
+    background-color: white;
+    color: #01352c;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #01352c;
+    color: white;
+}
+
+.caixa {
+    background-color: white;
+    width: 90%;
+    max-width: 700px;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #bad8b6;
+}
+
+.mensagens {
+    color: #333;
+    line-height: 1.6;
+}
