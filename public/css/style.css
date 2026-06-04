@@ -443,7 +443,7 @@ h1 span {
     justify-content: center;
 }
 
-.btn, .btn_assinar {
+.btn, .btn_assinar, .btn_plano {
     padding: 15px;
     cursor: pointer;
     border: 1px solid #01352c;
@@ -454,11 +454,11 @@ h1 span {
     transition: 0.3s;
 }
 
-.btn_assinar {
+.btn_assinar, .btn_plano {
     width: 200px;
 }
 
-.btn:hover, .btn_assinar:hover {
+.btn:hover, .btn_assinar:hover, .btn_plano:hover {
     background-color: #01352c;
     color: white;
 }
@@ -484,6 +484,11 @@ h1 span {
 /* 
    ASSINATURA (assinatura.html)
 */
+
+.btn_plano.ativo{
+    background-color: #01352c;
+    color: white;
+}
 
 .accordion-card {
     background-color: white;
