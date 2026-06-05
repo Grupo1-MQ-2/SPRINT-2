@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canalytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/dash.css">
+    <link rel="icon" href="../public/img/CanalyticsLogo.png">
+</head>
+
+<body class="dashboard">
+
+<nav>
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="https://raw.githubusercontent.com/Grupo1-MQ-2/SPRINT-2/main/public/img/logo_canalytics.png"
+             alt="Logo Canalytics" style="height: 150px; width: auto;">
+    </div>
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <button class="btn-1" onclick="window.location.href='index.html'">Voltar para o início</button>
+    </div>
+</nav>
+
+<!-- KPIs -->
+<div class="kpi-container" id="kpiContainer">
+    <div class="kpi-indicadores">concentração atual
+        <p class="kpi-valor" id="kpiAtual">--</p>
+        <p class="kpi-subtexto" id="kpiAtualHora">último registro</p>
+    </div>
+    <div class="kpi-indicadores">média do período
+        <p class="kpi-valor" id="kpiMedia">--</p>
+        <p class="kpi-subtexto" id="kpiMediaStatus">--</p>
+    </div>
+    <div class="kpi-indicadores">sensor ativo
+        <p class="kpi-valor" id="kpiSensor">--</p>
+        <p class="kpi-subtexto" id="kpiSensorStatus">último registro</p>
+    </div>
+</div>
+
+<div class="btns-dash" id="btnsCanavial">
+    
+</div>
+
+
+<div id="graficos"></div>
+
+</body>
+</html>
+
+<script>
+    let proximaAtualizacao;
+    let canavialAtivo = null;
+
+    
+    const canaviais = [
+        { id: 1, descricao: 'Canavial 1' },
+        { id: 2, descricao: 'Canavial 2' }
+    ];
+
+  
+    const charts = {};
+
+    window.onload = function () {
+    
+        canaviais.forEach(item => {
+            document.getElementById('btnsCanavial').innerHTML += `
+                <button
+                    class="btn-chart"
+                    id="btnCanavial${item.id}"
+                    onclick="exibirCanavial(${item.id})">
+                    ${item.descricao}
+                </button>
+            `;
+        });
+
+        
+        canaviais.forEach(item => {
+            document.getElementById('graficos').innerHTML += `
+                <div id="grafico${item.id}" class="display-none">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloCanavial${item.id}">${item.descricao}</span>
+                    </h3>
+                    <div class="area-graficos">
+                        <div class="graph">
+                            <canvas id="chartLinhas${item.id}"></canvas>
+                        </div>
+                        <div class="graph">
+                            <canvas id="chartBarras${item.id}"></canvas>
+                        </div>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura${item.id}" style="color: white"></p>
+                    </div>
+                </div>
+            `;
+
+           
+            obterDadosGrafico(item.id);
+        });
+
+      
+        if (canaviais.length > 0) {
+            exibirCanavial(canaviais[0].id);
+        }
+    };
+
+
+    function exibirCanavial(idCanavial) {
+        canaviais.forEach(item => {
+            const divGrafico = document.getElementById(`grafico${item.id}`);
+            const btn        = document.getElementById(`btnCanavial${item.id}`);
+
+            if (item.id != idCanavial) {
+            
+                divGrafico.classList.remove('display-block');
+                divGrafico.classList.add('display-none');
+                
+                btn.classList.remove('btn-verde');
+                btn.classList.add('btn-white');
+            } else {
+             
+                divGrafico.classList.remove('display-none');
+                divGrafico.classList.add('display-block');
+               
+                btn.classList.remove('btn-white');
+                btn.classList.add('btn-verde');
+
+                canavialAtivo = idCanavial;
+                atualizarTitulo(idCanavial);
+            }
+        });
+    }
+
+    function atualizarTitulo(idCanavial) {
+        const descricao = canaviais.find(c => c.id == idCanavial).descricao;
+        document.getElementById(`tituloCanavial${idCanavial}`).innerHTML =
+            `Últimas leituras de Concentração de Gás do <span style="color: #65a359">${descricao}</span>`;
+    }
+
+  
+
+    function obterDadosGrafico(idCanavial) {
+        fetch(`/leituras/ultimas/${idCanavial}`, { cache: 'no-store' })
+            .then(response => {
+                if (!response.ok) throw new Error('Erro na API');
+                return response.json();
+            })
+            .then(resposta => {
+                console.log(`Dados recebidos (canavial ${idCanavial}):`, resposta);
+                resposta.reverse(); 
+                plotarGrafico(resposta, idCanavial);
+            })
+            .catch(err => {
+                console.error('Erro ao obter dados:', err.message);
+            });
+    }
+
+    function plotarGrafico(leituras, idCanavial) {
+      
+        const dados = {
+            labels: leituras.map(r => r.momento_grafico),
+            datasets: [{
+                label: 'Concentração de Gás (ppm)',
+                data: leituras.map(r => r.valor_gas),
+                fill: false,
+                borderColor: 'rgb(101, 163, 89)',
+                backgroundColor: 'rgb(101, 163, 89)',
+                tension: 0.4
+            }]
+        };
+
+        
+        if (charts[`linhas${idCanavial}`]) {
+            charts[`linhas${idCanavial}`].destroy();
+        }
+
+        charts[`linhas${idCanavial}`] = new Chart(
+            document.getElementById(`chartLinhas${idCanavial}`),
+            { type: 'line', data: dados, options: { responsive: true } }
+        );
+
+  
+        const blocos    = agruparEmBlocos(leituras, 2);
+        const dadosBar  = {
+            labels: blocos.map((_, i) => `Período ${i + 1}`),
+            datasets: [{
+                label: 'Média por Período (ppm)',
+                data: blocos.map(b => media(b.map(r => r.valor_gas))),
+                backgroundColor: 'rgb(151, 196, 89)',
+                borderColor:     'rgb(151, 196, 89)',
+                borderRadius: 5
+            }]
+        };
+
+        if (charts[`barras${idCanavial}`]) {
+            charts[`barras${idCanavial}`].destroy();
+        }
+
+        charts[`barras${idCanavial}`] = new Chart(
+            document.getElementById(`chartBarras${idCanavial}`),
+            { type: 'bar', data: dadosBar, options: { responsive: true } }
+        );
+
+      
+        if (canavialAtivo == idCanavial) atualizarKPIs(leituras);
+
+        
+        setTimeout(() => atualizarGrafico(idCanavial, dados), 2000);
+    }
+
+
+
+    function atualizarGrafico(idCanavial, dados) {
+        fetch(`/leituras/tempo-real/${idCanavial}`, { cache: 'no-store' })
+            .then(response => {
+                if (!response.ok) throw new Error('Erro na API');
+                return response.json();
+            })
+            .then(novoRegistro => {
+                const avisoCaptura = document.getElementById(`avisoCaptura${idCanavial}`);
+                avisoCaptura.innerHTML = '';
+
+                const ultimoLabel = dados.labels[dados.labels.length - 1];
+
+                if (novoRegistro[0].momento_grafico === ultimoLabel) {
+                  
+                    avisoCaptura.innerHTML =
+                        "⚠️ Foi trazido o dado mais atual capturado pelo sensor. " +
+                        "Como não há dados novos a exibir, o gráfico não atualizará.";
+                } else {
+                   
+                    dados.labels.shift();
+                    dados.labels.push(novoRegistro[0].momento_grafico);
+                    dados.datasets[0].data.shift();
+                    dados.datasets[0].data.push(novoRegistro[0].valor_gas);
+
+                    charts[`linhas${idCanavial}`].update();
+
+              
+                    if (canavialAtivo == idCanavial) atualizarKPIsUnico(novoRegistro[0], dados);
+                }
+
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idCanavial, dados), 2000);
+            })
+            .catch(err => {
+                console.error('Erro ao atualizar gráfico:', err.message);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idCanavial, dados), 2000);
+            });
+    }
+
+  
+
+    function atualizarKPIs(leituras) {
+        if (!leituras.length) return;
+        const ultima = leituras[leituras.length - 1];
+        const mediaV = media(leituras.map(r => r.valor_gas));
+
+        document.getElementById('kpiAtual').textContent        = `${ultima.valor_gas} ppm`;
+        document.getElementById('kpiAtualHora').textContent    = `Último registro: ${ultima.momento_grafico}`;
+        document.getElementById('kpiMedia').textContent        = `${mediaV} ppm`;
+        document.getElementById('kpiMediaStatus').textContent  = parseFloat(mediaV) > 400 ? 'acima do ideal' : 'dentro do ideal';
+        document.getElementById('kpiSensor').textContent       = `Sensor ${ultima.id_sensor}`;
+        document.getElementById('kpiSensorStatus').textContent = `Último registro: ${ultima.momento_grafico}`;
+    }
+
+    function atualizarKPIsUnico(registro, dados) {
+        const mediaV = media(dados.datasets[0].data);
+
+        document.getElementById('kpiAtual').textContent        = `${registro.valor_gas} ppm`;
+        document.getElementById('kpiAtualHora').textContent    = `Último registro: ${registro.momento_grafico}`;
+        document.getElementById('kpiMedia').textContent        = `${mediaV} ppm`;
+        document.getElementById('kpiMediaStatus').textContent  = parseFloat(mediaV) > 400 ? 'acima do ideal' : 'dentro do ideal';
+        document.getElementById('kpiSensor').textContent       = `Sensor ${registro.id_sensor}`;
+        document.getElementById('kpiSensorStatus').textContent = `Último registro: ${registro.momento_grafico}`;
+    }
+
+    
+
+    function media(arr) {
+        if (!arr.length) return 0;
+        return (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1);
+    }
+
+    function agruparEmBlocos(arr, tamanho) {
+        const blocos = [];
+        for (let i = 0; i < arr.length; i += tamanho) {
+            blocos.push(arr.slice(i, i + tamanho));
+        }
+        return blocos;
+    }
+</script>

@@ -12,7 +12,7 @@
     height: 100px;
     border-radius: 10px;
     padding: 15px;
-    border: 1px solid #C0DD97;
+    border: 1px solid #01352c;
 }
 
 .kpi-valor {
@@ -38,7 +38,7 @@ h1 {
 }
 
 h1 span {
-    color: #97C459;
+    color: #01352c;
     font-size: 16px;
     font-weight: normal;
 }
@@ -69,7 +69,7 @@ body.dashboard {
     padding-top: 90px; 
 }
 nav {
-    background-color: #EAF3DE;
+    background-color: #01352c;
     position: fixed;
     top: 0;
     left: 0;
@@ -86,4 +86,79 @@ nav a {
     text-decoration: none;
     color: #3B6D11;
     font-weight: bold;
+}
+
+.btns-dash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    padding: 0 30% 0 30%;
+}
+
+
+.btn-chart {
+    font-family: 'Barlow', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 0;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 15px;
+    color: #65a359;          
+    background-color: white;
+    margin: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+
+.btn-verde {
+    color: white;
+    background-color: #01352c;  
+}
+
+
+.btn-white {
+    color: #65a359;
+    background-color: white;
+}
+
+
+
+.display-none  { display: none;  }
+.display-block { display: block; }
+
+.tituloGraficos {
+    color: rgb(216, 216, 216);
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.area-graficos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.graph {
+    width: 40%;
+    min-width: 280px;
+    margin: auto;
+    padding-top: 10px;
+}
+
+.label-captura {
+    display: flex;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 0;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
 }
