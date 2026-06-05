@@ -14,7 +14,7 @@ body {
 }
 
 .container-navegacao {
-    font-size: 21px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     padding: 10px;
@@ -35,6 +35,7 @@ body {
     margin-right: 0px;
     justify-content: flex-end;
     padding: 7px;
+    list-style: none
 }
 
 .link-menu,
@@ -96,27 +97,65 @@ body {
     margin-right: 0px;
     padding: 10px;
 }
+.secao-apresentacao {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px 50px;
+    border-bottom: 2px solid #dddddd;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-.secao-apresentacao,
-.secao-contexto,
+
+
+.secao-contexto {
+    width: 100%;
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.subtitulo-secao {
+    display: block;
+    text-align: left;
+    font-size: 28px;
+    color: #3B6D11;
+    margin: 0 0 20px 0;
+}
+
+.paragrafo-contexto {
+    max-width: 520px;
+    font-size: 18px;
+    text-align: left;
+}
 .fluxo-operacional {
-    margin: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px 50px;
+    border-bottom: 2px solid #dddddd;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.secao-hero-solucao {
     border-bottom: 2px solid #dddddd;
     padding-bottom: 50px;
 }
 
-.secao-hero-solucao{
-    border-bottom: 2px solid #dddddd;
-    padding-bottom: 50px;
+.flex-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
 }
 
-.flex-container,
 .cartao-problema,
 .bloco-etapa,
 .bloco-etapa-invertido {
     display: flex;
     align-items: center;
-    margin: 40px;
+    margin: 40px 0;
+    gap: 60px;
 }
 
 .cartao-problema {
@@ -139,9 +178,12 @@ body {
 }
 
 .coluna-texto {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
+    max-width: 460px;
+
 }
 
 .bloco-etapa-invertido .texto-etapa {
@@ -150,42 +192,42 @@ body {
 }
 
 .coluna-imagem {
+    flex: 1;
     display: flex;
     justify-content: flex-end;
-    margin-left: 50px;
+
 }
 
 .imagem-responsivel {
-    width: 650px;
+    width: 100%;
+    display: flex;
     height: auto;
+    border-radius: 20px;
+    box-shadow: #333;
 }
 
 .manchete-principal {
-    font-size: 50px;
+    font-family: 'Arial', serif;
+    font-size: 38px;
     color: #27500A;
-    margin: 20px 0px;
+    margin: 0 0 20px;
 }
 
 h1 span {
     color: #97C459;
 }
 
-.subtitulo-secao {
-    display: flex;
-    justify-content: center;
-    font-size: 28px;
-    color: #3B6D11;
-    margin: 0px 0px 20px 0px;
-}
+
 
 .etiqueta-verde {
     font-size: inherit;
 }
 
 .paragrafo-comum {
-    font-size: 25px;
-    margin: 0px 0px 15px 0px;
-    color: black;
+    font-size: 16px;
+    margin: 0 0 36px;
+    color: #555;
+    max-width: 420px;
 }
 
 .grade-cards {
@@ -218,17 +260,15 @@ h1 span {
 }
 
 .cards {
-    margin: 80px;
+    margin: 40px 0;
     background: white;
-    backdrop-filter: blur(10px);
     border-radius: 15px;
     display: flex;
     justify-content: space-between;
-    padding: 50px;
-    gap: 70px;
-    border-style: solid;
-    border-color: #3B6D11;
-    flex: 3;
+    padding: 30px;
+    gap: 40px;
+    box-shadow: #333;
+
 }
 
 .icon {
@@ -258,13 +298,13 @@ h1 span {
     color: #01352c;
     border: 1px solid #01352c;
     justify-content: center;
-    padding: 20px 36px;
+    padding: 15px 25px;
     display: flex;
     border-radius: 18px;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-    min-width: 170px;
+    min-width: 145px;
     width: auto;
     border-color: #01352c;
     text-decoration: none;
@@ -281,36 +321,51 @@ h1 span {
     align-items: center;
 }
 
-.card-diferencial {
-    margin: 80px;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(10px);
-    border-radius: 85px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px;
-    gap: 70px;
-    border-style: solid;
-    border-color: #607B3B;
-}
-
-.card-diferencial h4 {
-    font-size: 26px;
-    margin-bottom: 12px;
-    color: #607B3B;
-}
-
-.card-diferencial p {
-    font-size: 20px;
-    color: #4a4a4a;
+.container-diferenciais {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    box-sizing: border-box;
 }
 
 .titulo-diferenciais {
-    display: flex;
+    font-size: 26px;
     color: #27500A;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+.diferenciais-grade {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.card-diferencial {
+    background: #ffffff;
+    border: 3px ;
+    border-radius: 12px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+   
+}
+
+
+.card-diferencial h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.card-diferencial p {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
 }
 
 
@@ -330,11 +385,10 @@ h1 span {
 .area-principal .secao-contexto,
 .area-principal .secao-hero-solucao,
 .area-principal .fluxo-operacional {
-    margin-bottom: 60px;
-    margin-left: 0;
-    margin-right: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px 50px;
     border-bottom: 2px solid #dddddd;
-    padding-bottom: 40px;
 }
 
 
@@ -443,7 +497,9 @@ h1 span {
     justify-content: center;
 }
 
-.btn, .btn_assinar, .btn_plano {
+.btn,
+.btn_assinar,
+.btn_plano {
     padding: 15px;
     cursor: pointer;
     border: 1px solid #01352c;
@@ -454,11 +510,14 @@ h1 span {
     transition: 0.3s;
 }
 
-.btn_assinar, .btn_plano {
+.btn_assinar,
+.btn_plano {
     width: 200px;
 }
 
-.btn:hover, .btn_assinar:hover, .btn_plano:hover {
+.btn:hover,
+.btn_assinar:hover,
+.btn_plano:hover {
     background-color: #01352c;
     color: white;
 }
@@ -485,7 +544,7 @@ h1 span {
    ASSINATURA (assinatura.html)
 */
 
-.btn_plano.ativo{
+.btn_plano.ativo {
     background-color: #01352c;
     color: white;
 }
@@ -495,7 +554,7 @@ h1 span {
     border-radius: 12px;
     margin-bottom: 15px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
 }
 
 .accordion {
@@ -575,10 +634,10 @@ h1 span {
     padding: 15px;
     font-size: 20px;
     border-radius: 8px;
-    width: 80%; 
-    max-width: 500px; 
+    width: 80%;
+    max-width: 500px;
     min-height: 80px;
-    min-width: 90px; 
+    min-width: 90px;
     border: 2px solid #CCCCCC;
     color: #1F2A44;
     text-align: center;
