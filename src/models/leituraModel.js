@@ -9,7 +9,7 @@ function buscarUltimasLeituras(idCanavial, limite_linhas) {
             l.data_hora,
             DATE_FORMAT(l.data_hora, '%H:%i:%s') AS momento_grafico,
             s.id AS id_sensor,
-            s.unidadeMedida
+            s.unidade_medida
         FROM leitura l
         INNER JOIN sensor s ON l.fk_sensor = s.id
         WHERE s.fk_canavial = ${idCanavial}
