@@ -6,7 +6,7 @@ var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 // A sintaxe do operador ternário é: condição ? valor_se_verdadeiro : valor_se_falso
 
 require("dotenv").config({ path: caminho_env });
-require("dotenv").config(); // bobIA
+// require("dotenv").config(); // bobIA
 
 
 var express = require("express");
@@ -62,7 +62,8 @@ app.listen(PORTA_APP, function () {
     \t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'\n\n`);
 });
 
-app.listen(PORTA_SERVIDOR, () => {
+const moduloHttpOuvinte = require('http');
+moduloHttpOuvinte.createServer(app).listen(PORTA_SERVIDOR, () => {
     console.info(
         `
         ######                ###    #    
@@ -96,8 +97,8 @@ async function gerarResposta(mensagem) {
         // gerando conteúdo com base na pergunta
         const modeloIA = chatIA.models.generateContent({
             model: "gemini-2.5-flash",
-            contents: 
-            `${mensagem}`
+            contents:
+                `${mensagem}`
         });
         const resposta = (await modeloIA).text;
         const tokens = (await modeloIA).usageMetadata;
