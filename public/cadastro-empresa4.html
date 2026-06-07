@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro do Canavial | Canalytics</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="localizacao">
+
+        <section class="parteesquerda">
+
+            <div class="logo">
+                <img src="img/CanalyticsLogo.png" alt="Canalytics" class="logo-cadastro">
+            </div>
+
+            <div>
+                <h1 class="titulo-esquerda4">Cadastro do Canavial</h1>
+                <p class="descricao-esquerda4">
+                    Cadastre as áreas de cultivo que serão monitoradas pela plataforma.
+                </p>
+            </div>
+
+            <div class="steps-lista">
+
+                <div class="step-item">
+                    <div class="step-um">✓</div>
+                    <span class="step-label-um">Cadastro Empresarial</span>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-um">✓</div>
+                    <span class="step-label-um">Localização da Empresa</span>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-um">✓</div>
+                    <span class="step-label-um">Plano de Assinatura</span>
+                </div>
+
+                <div class="step-item">
+                    <div class="steps">4</div>
+                    <span class="step-label">Cadastro do Canavial</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="partedireita">
+
+            <div class="alinhamento-direita">
+
+                <a href="cadastro-empresa3.html" class="voltar">
+                    ← Voltar para a etapa anterior
+                </a>
+
+                <div>
+                    <h2 class="form-titulo">Cadastro dos Canaviais</h2>
+                    <p class="form-subtitulo">
+                        Adicione uma ou mais áreas de cultivo da empresa.
+                    </p>
+                </div>
+
+
+                <div class="canavial-card">
+
+                    <h3>Canavial 1</h3>
+
+                    <div class="campo">
+                        <label>Nome do Canavial</label>
+                        <input type="text" placeholder="Ex: Fazenda Norte" id="ipt_nome">
+                    </div>
+
+                    <div class="campo">
+                        <label>Coordenada</label>
+                        <input type="text" placeholder="Ex: -23.5505, -46.6333" id="ipt_coordernada">
+                    </div>
+
+                </div>
+                <br>
+                <br>
+                <br>
+
+                <div class="representantes-box">
+
+
+
+                    <h3>Representantes da Empresa</h3>
+
+                    <p> Adicione representantes para ter acesso ao dashboard
+                    </p>
+
+
+                    <div class="opcoes-representante">
+
+
+                        <div class="campo">
+                            <label>Nome:</label>
+
+                            <input type="text" name="representante" id="ipt_nome">
+
+                        </div>
+
+                        <div class="campo">
+                            <label>Email</label>
+                            <input type="text" name="email" id="ipt_email">
+                        </div>
+
+
+                        <div class="campo">
+                            <label>Data de Nascimento </label>
+                            <input type="text" name="dt_nascimento" id="ipt_nasc">
+                        </div>
+
+
+
+
+                        <div class="campo">
+                            <label>Crie uma senha </label>
+
+                            <input type="text" name="senha" id="ipt_senha">
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+
+                <button class="btn-continuar" onclick="Continuar()">
+                    Finalizar Cadastro
+                </button>
+
+                <p class="login-link">
+                    Já possui uma conta?
+                    <a href="login-empresa.html">Entrar</a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        function Continuar() {
+            function continuar() {
+
+                if (ipt_sim.checked) {
+                    window.location = "cadastroRepresentante.html";
+                }
+
+                if (ipt_nao.checked) {
+                    alert("Cadastro realizado com sucesso!");
+                    window.location = "loginEmpresa.html";
+                }
+
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>

@@ -865,78 +865,98 @@ h1 span {
 .body-cadastro-empresa {
     margin: 0;
     padding: 0;
-    background-color: #e9ecef;
+    background: #ffffff;
     min-height: 100vh;
+    font-family: Arial, sans-serif;
 }
 
 .cadastro-empresa {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     width: 100%;
     min-height: 100vh;
-    border-radius: 0;
-    box-shadow: none;
-    overflow: hidden;
+    display: flex;
+    background: #ffffff;
 }
 
 .texto-cadastro {
+    width: 620px;
+    min-height: 100vh;
     background: #01352c;
-    padding: 48px 48px;
+    padding: 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap:40px;
-    min-height: 100vh;
-    box-sizing: border-box;
+    gap: 36px;
 }
 
 .logo-cadastro {
-    height: 36px;
-    width: auto;
+    width: 145px;
+    height: auto;
     margin-bottom: 40px;
 }
 
 .texto-cadastro h1 {
-    font-size: 22px;
-    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 700;
     color: #ffffff;
-    margin: 0 0 12px;
-    line-height: 1.3;
+    margin-bottom: 12px;
 }
 
 .texto-cadastro p {
-    font-size: 13px;
-    color: #e2dcdc;
-    line-height: 1.7;
-    margin: 0;
+    max-width: 390px;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.75);
 }
 
-.voltar-cadastro {
-    display: none;
+.passos-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 8px;
+}
+
+.passo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.passo-num {
+    width: 24px;
+    height: 24px;
+    color: #97C459;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.passo-texto {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55);
 }
 
 .formulario-cadastro-empresa {
-    background: #ffffff;
-    padding: 60px 56px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;        
+    flex: 1;
     min-height: 100vh;
-    box-sizing: border-box;
+    background: #ffffff;
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .formulario-limitacao {
     width: 100%;
-    max-width: 400px;   
+    max-width: 500px;
 }
 
 .voltar-cadastro {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    display: inline-block;
     font-size: 13px;
-    color: #666;
+    color: #6b6b60;
     text-decoration: none;
     margin-bottom: 24px;
 }
@@ -946,32 +966,32 @@ h1 span {
 }
 
 .campo-empresa {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 14px;
 }
 
 .campo-empresa label {
-    display: block;
     font-size: 13px;
-    color: #555;
+    color: #555555;
     margin-bottom: 5px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .campo-empresa input {
     width: 100%;
-    padding: 15px 20px;
+    height: 46px;
     border: 1px solid #d6ddd0;
     border-radius: 8px;
     background: #f9faf8;
+    padding: 0 14px;
     font-size: 14px;
     color: #1a1a1a;
-    box-sizing: border-box;
-    transition: border-color .2s;
+    outline: none;
     font-family: Arial, sans-serif;
 }
 
 .campo-empresa input:focus {
-    outline: none;
     border-color: #3B6D11;
     background: #ffffff;
 }
@@ -982,66 +1002,427 @@ h1 span {
 
 .btn-cadastro-empresa {
     width: 100%;
-    padding: 12px;
+    height: 46px;
     background: #01352c;
     color: #ffffff;
     border: none;
     border-radius: 8px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     margin-top: 8px;
-    transition: background .2s;
 }
 
 .btn-cadastro-empresa:hover {
-    background:  #004d2a;
+    background: #004d2a;
 }
 
 .login-cadastro {
     text-align: center;
     font-size: 13px;
-    color: #666;
+    color: #666666;
     margin-top: 16px;
 }
 
 .login-cadastro a {
     color: #3B6D11;
+    font-weight: 700;
     text-decoration: none;
-    font-weight: 600;
 }
 
-.login-cadastro a:hover {
-    text-decoration: underline;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.passos-cadastro {
+body {
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+    color: #1a1a16;
+}
+
+.localizacao {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background: #ffffff;
+}
+
+
+
+.parteesquerda {
+    width: 620px;
+    min-height: 100vh;
+    background: #01352c;
+    padding: 48px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    justify-content: center;
+    gap: 36px;
 }
 
-.passo {
+.logo {
     display: flex;
     align-items: center;
-    gap: 12px;
 }
 
-.passo-num {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: transparent;  
+.titulo-esquerda {
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.descricao-esquerda {
+    max-width: 390px;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.steps-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 8px;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.step-um,
+.steps {
+    width: 24px;
+    height: 24px;
+    color: #97C459;
+    font-size: 14px;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    font-weight: 600;
-    color: #97C459;
-    flex-shrink: 0;
 }
 
-.passo-texto {
+.step-label-um {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: line-through;
+}
+
+.step-label {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+
+
+.partedireita {
+    flex: 1;
+    min-height: 100vh;
+    background: #ffffff;
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alinhamento-direita {
+    width: 100%;
+    max-width: 500px;
+}
+
+.voltar {
+    display: inline-block;
     font-size: 13px;
-    color: #8d8c8c
+    color: #6b6b60;
+    text-decoration: none;
+    margin-bottom: 24px;
+}
+
+.voltar:hover {
+    color: #01352c;
+}
+
+.form-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a16;
+    margin-bottom: 6px;
+}
+
+.form-subtitulo {
+    font-size: 13px;
+    color: #666666;
+    margin-bottom: 24px;
+    line-height: 20px;
+}
+
+
+
+.inf-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.inf-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    font-size: 13px;
+    color: #555555;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    height: 46px;
+    border: 1px solid #d6ddd0;
+    border-radius: 8px;
+    background: #f9faf8;
+    padding: 0 14px;
+    font-size: 14px;
+    color: #1a1a1a;
+    outline: none;
+    font-family: Arial, sans-serif;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: #3B6D11;
+    background: #ffffff;
+}
+
+.campo input::placeholder {
+    color: #aaa;
+}
+
+
+.btn-continuar {
+    width: 100%;
+    height: 46px;
+    background: #01352c;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-continuar:hover {
+    background: #004d2a;
+}
+
+.login-link {
+    text-align: center;
+    font-size: 13px;
+    color: #666666;
+    margin-top: 16px;
+}
+
+.login-link a {
+    color: #3B6D11;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+
+.planos-assinatura {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.card-plano {
+    width: 100%;
+    border: 1px solid #d6ddd0;
+    border-radius: 8px;
+    background: #fafaf8;
+    padding: 18px;
+    cursor: pointer;
+    position: relative;
+}
+
+.card-plano:hover {
+    border-color: #3B6D11;
+    background: #ffffff;
+}
+
+
+
+.card-plano h3 {
+    font-size: 18px;
+    color: #01352c;
+    margin-bottom: 6px;
+}
+
+.card-plano p {
+    font-size: 13px;
+    color: #666666;
+    margin-bottom: 8px;
+}
+
+.card-plano strong {
+    font-size: 24px;
+    color: #01352c;
+}
+
+.card-plano span {
+    font-size: 13px;
+    color: #666666;
+    margin-left: 4px;
+}
+
+.badge-plano {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #97C459;
+    color: #01352c;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+
+.canavial-card,
+.representantes-box,
+.representante-card {
+    width: 100%;
+    border: 1px solid #d6ddd0;
+    border-radius: 8px;
+    background: #fafaf8;
+    padding: 20px;
+}
+
+.canavial-card h3,
+.representantes-box h3,
+.representante-card h3 {
+    font-size: 18px;
+    color: #01352c;
+    margin-bottom: 16px;
+}
+
+.btn-add-canavial,
+.btn-add-representante {
+    width: 100%;
+    height: 42px;
+    border: 1px dashed #3B6D11;
+    background: #ffffff;
+    border-radius: 8px;
+    color: #01352c;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 14px;
+}
+
+.btn-add-canavial:hover,
+.btn-add-representante:hover {
+    background: #f2f7f4;
+}
+
+.representantes-box p {
+    font-size: 13px;
+    color: #666666;
+    line-height: 20px;
+}
+
+.opcoes-representante {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.opcoes-representante label {
+    font-size: 14px;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.sucesso-box {
+    width: 100%;
+    text-align: center;
+}
+
+.icone-sucesso {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.codigo-empresa {
+    margin: 30px 0;
+    padding: 20px;
+    border: 1px solid #d8d8d0;
+    border-radius: 8px;
+    background: #fafaf8;
+}
+
+.codigo-empresa p {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 10px;
+}
+
+.codigo-empresa h2 {
+    font-size: 36px;
+    color: #01352c;
+    letter-spacing: 3px;
+}
+
+.btn-secundario {
+    width: 100%;
+    height: 46px;
+    margin-top: 10px;
+    border: 1px solid #01352c;
+    background: #ffffff;
+    color: #01352c;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.btn-secundario:hover {
+    background: #f2f7f4;
+}
+
+.titulo-esquerda4 {
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px
+}
+.descricao-esquerda4{
+     max-width: 390px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #ffffff;
+
 }

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Assinatura | Canalytics</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="localizacao">
+
+        <section class="parteesquerda">
+            <div class="logo">
+                <img src="img/CanalyticsLogo.png" alt="Canalytics" class="logo-cadastro">
+            </div>
+
+            <div>
+                <h1 class="titulo-esquerda">Plano de Assinatura</h1>
+                <p class="descricao-esquerda">
+                    Escolha o plano ideal para monitorar seus sensores em campo.
+                </p>
+            </div>
+
+            <div class="steps-lista">
+                <div class="step-item">
+                    <div class="step-um">✓</div>
+                    <span class="step-label-um">Cadastro Empresarial</span>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-um">✓</div>
+                    <span class="step-label-um">Localização da Empresa</span>
+                </div>
+
+                <div class="step-item">
+                    <div class="steps">3</div>
+                    <span class="step-label">Plano de Assinatura</span>
+                </div>
+
+                <div class="step-item">
+                    <div class="steps">4</div>
+                    <span class="step-label">Cadastro do Canavial</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="partedireita">
+            <div class="alinhamento-direita">
+
+                <a href="cadastro-empresa2.html" class="voltar">← Voltar para a etapa anterior</a>
+
+                <div>
+                    <h2 class="form-titulo">Escolha seu Plano</h2>
+                    <p class="form-subtitulo">
+                        O valor final será calculado de acordo com a quantidade de sensores cadastrados.
+                    </p>
+                </div>
+
+                <div class="planos-assinatura">
+
+                    <div class="card-plano" data-plano="Trimestral" data-valor="15">
+                        <h3>Trimestral</h3>
+                        <p>Contrato de 3 meses</p>
+                        <b>R$ 15,00</b>
+                        <span>por sensor / mês</span>
+                    </div>
+
+                    <div class="card-plano destaque" data-plano="Semestral" data-valor="10">
+                        <h3>Semestral</h3>
+                        <p>Contrato de 6 meses</p>
+                        <b>R$ 10,00</b>
+                        <span>por sensor / mês</span>
+                    </div>
+
+                    <div class="card-plano" data-plano="Anual" data-valor="8">
+                        <h3>Anual</h3>
+                        <p>Contrato de 12 meses</p>
+                        <b>R$ 8,00</b>
+                        <span>por sensor / mês</span>
+                    </div>
+
+                </div>
+
+                <button class="btn-continuar" onclick="ContinuarCadastro()">
+                    Continuar para Cadastro do Canavial
+                </button>
+
+                <p class="login-link">
+                    Já possui uma conta?
+                    <a href="login-empresa.html">Entrar</a>
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+    <script>
+        function ContinuarCadastro(){
+             window.location.href = "cadastro-empresa4.html";
+}
+        
+    </script>
+
+</body>
+
+</html>
