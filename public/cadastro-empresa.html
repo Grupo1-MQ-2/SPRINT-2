@@ -86,59 +86,7 @@
 
 </body>
 <script>
-    function cadastrarEmpresa() {
-
-        var razaoSocialVar = document.getElementById("razao_social").value;
-        var nomeFantasiaVar = document.getElementById("nome_fantasia").value;
-        var cnpjVar = document.getElementById("cnpj").value;
-        var senhaVar = document.getElementById("senha").value;
-
-        if (razaoSocialVar == "" || nomeFantasiaVar == "" || cnpjVar == "" || senhaVar == "") {
-            alert("Por favor, preencha todos os campos!");
-            return false;
-        }
-
-        var cnpjLimpo = cnpjVar.replace(/\D/g, '');
-
-        if (cnpjLimpo.length !== 14) {
-            alert("Por favor, digite um CNPJ válido com 14 dígitos.");
-            return false;
-        }
-
-        fetch("/empresas/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                razaoSocial: razaoSocialVar,
-                nomeFantasia: nomeFantasiaVar,
-                cnpj: cnpjLimpo,
-                senha: senhaVar
-            })
-        })
-
-            .then(function (resposta) {
-                if (resposta.ok) {
-                    resposta.json().then(json => {
-                        alert(`Empresa cadastrada com sucesso!\nGuarde seu Código de Ativação: ${json.codigoAtivacao}`);
-
-                        window.location.href = "cadastro-empresa2.html";
-                    });
-
-                } else {
-                    resposta.json().then(json => {
-                        alert(`Erro no cadastro: ${json.mensagem || "Verifique os dados."}`);
-                    });
-                }
-            })
-            .catch(function (erro) {
-                console.log(`#ERRO ao cadastrar: ${erro}`);
-                alert("Houve um erro ao tentar se conectar com o servidor.");
-            });
-
-        return false;
-    }
+    
 </script>
 
 </html>
