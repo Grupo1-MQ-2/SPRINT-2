@@ -57,8 +57,7 @@
         document.getElementById('graficos').innerHTML = `
             <div id="grafico${idCanavial}" class="display-block">
                 <h3 class="tituloGraficos">
-                    Últimas leituras de Concentração de Gás do
-                    <span style="color: #65a359">Sensor ${idCanavial}</span>
+                    Últimas leituras de Concentração de Gás do&nbsp;<span style="color: #65a359">Sensor ${idCanavial}</span>
                 </h3>
                 <div class="area-graficos">
                     <div class="graph">
@@ -66,7 +65,7 @@
                     </div>
                 </div>
                 <div class="label-captura">
-                    <p id="avisoCaptura${idCanavial}" style="color: white"></p>
+                    <p id="avisoCaptura${idCanavial}"></p>
                 </div>
             </div>
         `;
@@ -91,9 +90,9 @@
                 console.error('Nenhum dado encontrado ou erro na API');
             }
         })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
 
     function plotarGrafico(leituras, idCanavial) {
@@ -162,27 +161,34 @@
                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idCanavial, dados, chartLinhas), 2000);
             }
         })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
 
     function atualizarKPIs(leituras) {
         if (!leituras.length) return;
         const ultima = leituras[leituras.length - 1];
 
-        document.getElementById('kpiAtual').textContent        = `${ultima.valor_gas} ppm`;
-        document.getElementById('kpiAtualHora').textContent    = `Último registro: ${ultima.momento_grafico}`;
-        document.getElementById('kpiStatusTexto').textContent  = calcularStatus(ultima.valor_gas);
-        document.getElementById('kpiSensor').textContent       = `Sensor ${ultima.id_sensor}`;
+        document.getElementById('kpiAtual').textContent = `${ultima.valor_gas} ppm`;
+        document.getElementById('kpiAtualHora').textContent = `Último registro: ${ultima.momento_grafico}`;
+
+        
+        document.getElementById('kpiStatus').textContent = calcularStatus(ultima.valor_gas);
+        document.getElementById('kpiStatusTexto').textContent = "Classificação do nível";
+
+        document.getElementById('kpiSensor').textContent = `Sensor ${ultima.id_sensor}`;
         document.getElementById('kpiSensorStatus').textContent = `Último registro: ${ultima.momento_grafico}`;
     }
 
     function atualizarKPIsUnico(registro) {
-        document.getElementById('kpiAtual').textContent        = `${registro.valor_gas} ppm`;
-        document.getElementById('kpiAtualHora').textContent    = `Último registro: ${registro.momento_grafico}`;
-        document.getElementById('kpiStatusTexto').textContent  = calcularStatus(registro.valor_gas);
-        document.getElementById('kpiSensor').textContent       = `Sensor ${registro.id_sensor}`;
+        document.getElementById('kpiAtual').textContent = `${registro.valor_gas} ppm`;
+        document.getElementById('kpiAtualHora').textContent = `Último registro: ${registro.momento_grafico}`;
+
+
+        document.getElementById('kpiStatus').textContent = calcularStatus(registro.valor_gas);
+        document.getElementById('kpiStatusTexto').textContent = "Classificação do nível";
+        document.getElementById('kpiSensor').textContent = `Sensor ${registro.id_sensor}`;
         document.getElementById('kpiSensorStatus').textContent = `Último registro: ${registro.momento_grafico}`;
     }
 
