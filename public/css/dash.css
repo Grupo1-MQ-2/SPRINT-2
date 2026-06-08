@@ -6,7 +6,7 @@
 }
 
 .kpi-indicadores {
-    background-color: #ecffc1;
+    background-color: #ffffff;
     color: #27500A;
     min-width: 240px; 
     height: auto; 
@@ -167,6 +167,20 @@ nav a {
 .label-captura p {
     color: #555555 !important; 
     text-align: center;
+}
+
+.error-card {
+    display: none;
+    background-color: #3B6D11;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    
 }
 
 canvas {
