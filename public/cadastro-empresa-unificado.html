@@ -188,9 +188,9 @@
           <label for="selectPlano">Plano de Assinatura</label>
           <select id="selectPlano">
             <option value="">Selecione</option>
-            <option value="TRIMESTRAL">Trimestral - Contrato de 3 meses (R$ 15,00 por sensor/mês)</option>
-            <option value="SEMESTRAL">Semestral - Contrato de 6 meses (R$ 10,00 por sensor/mês)</option>
-            <option value="ANUAL">Anual - Contrato de 12 meses (R$ 8,00 por sensor/mês)</option>
+            <option value="1">Trimestral - Contrato de 3 meses (R$ 15,00 por sensor/mês)</option>
+            <option value="2">Semestral - Contrato de 6 meses (R$ 10,00 por sensor/mês)</option>
+            <option value="3">Anual - Contrato de 12 meses (R$ 8,00 por sensor/mês)</option>
           </select>
         </div>
 
@@ -293,7 +293,7 @@
           Finalizar Cadastro
         </button>
 
-        <p class="login-link">
+        <p>
           Já possui uma conta?
           <a href="login-empresa.html">Entrar</a>
         </p>
@@ -318,7 +318,7 @@
     cep: "",
     estado: "",
     cidade: "",
-    plano: "",
+    fkAssinatura: 0,
     nomeCanavial: "",
     coordenadasCanavial: "",
       representante: {
@@ -396,6 +396,7 @@
 
       etapa2.style.display = "none";
       etapa3.style.display = "flex";
+      console.log("Dados atuais da empresa (etapa2):", empresa);
     }
 
     if (etapa === 4) {
@@ -403,10 +404,11 @@
         alert("Por favor, selecione um plano de assinatura!");
         return false;
       }
-      empresa.plano = selectPlano.value;
+      empresa.fkAssinatura = Number(selectPlano.value);
       etapa3.style.display = "none";
       etapa4.style.display = "flex";
     }
+    console.log("Dados atuais da empresa (etapa3):", empresa);
   }
 
   function validacoesFinais() {
@@ -450,7 +452,7 @@
     empresa.representante.email = emailRepresentante;
     empresa.representante.dataNascimento = dataNascimento;
     empresa.representante.senha = senhaRepresentante;
-
+    console.log("Dados finais da empresa para cadastro:", empresa);
     cadastrarEmpresa();
   }
 

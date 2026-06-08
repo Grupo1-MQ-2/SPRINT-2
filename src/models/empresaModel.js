@@ -30,12 +30,31 @@ function autenticar(cnpj, codigo, senha) {
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(razaoSocial, nomeFantasia, cnpj, senha, codigoAtivacao) {
-  var instrucaoSql = `INSERT INTO empresa (razao_social, nome_fantasia, cnpj, senha, codigo_ativacao)
-  VALUES ('${razaoSocial}', '${nomeFantasia}', '${cnpj}', '${senha}', '${codigoAtivacao}')`;
+function cadastrar(razaoSocial, nomeFantasia, cnpj, senha, logradouro, numero, complemento, cep, estado, cidade, fkAssinatura, nomeCanavial, coordenadasCanavial, nome, email, dataNascimento, senhaRepresentante, codigoAtivacao) {
+  var instrucaoSqlEmpresa = `INSERT INTO empresa (fk_assinatura, razao_social, nome_fantasia, cnpj, senha, codigo_ativacao)
+  VALUES (${fkAssinatura}, '${razaoSocial}', '${nomeFantasia}', '${cnpj}', '${senha}', '${codigoAtivacao}')`;
 
-  console.log("Executando a instrução SQL: \n + instrucaoSql");
-  return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL Empresa: \n" + instrucaoSqlEmpresa);
+  
+  return database.executar(instrucaoSqlEmpresa).then((resultado) => {
+    var fkEmpresa = resultado.insertId;
+
+    var instrucaoSqlLocalizacao = `INSERT INTO localizacaoEmpresa (fk_empresa, logradouro, numero, complemento, CEP, cidade, estado)
+    VALUES (${fkEmpresa}, '${logradouro}', ${numero}, '${complemento}', '${cep}', '${cidade}', '${estado}')`;
+
+    var instrucaoSqlCanavial = `INSERT INTO canavial (fk_empresa, nome, coordenada)
+    VALUES (${fkEmpresa}, '${nomeCanavial}', '${coordenadasCanavial}')`;
+
+    var instrucaoSqlRepresentante = `INSERT INTO representante (fk_empresa, nome, email, dt_nascimento, senha)
+    VALUES (${fkEmpresa}, '${nome}', '${email}', '${dataNascimento}', '${senhaRepresentante}')`;
+
+    console.log("Executando relacionamentos para fk_empresa: " + fkEmpresa);
+    return Promise.all([
+      database.executar(instrucaoSqlLocalizacao),
+      database.executar(instrucaoSqlCanavial),
+      database.executar(instrucaoSqlRepresentante)
+    ]).then(() => resultado);
+  });
 }
 
 module.exports = { buscarPorCnpj, buscarPorId, autenticar, cadastrar, listar };

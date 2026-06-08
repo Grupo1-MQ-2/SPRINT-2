@@ -70,24 +70,26 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-  var dados = req.body
-  var cnpj = dados.empresa.cnpj;
-  var razaoSocial = dados.empresa.razaoSocial;
-  var nomeFantasia = dados.empresa.nomeFantasia;
-  var senha = dados.empresa.senha;
-  var logradouro = dados.empresa.logradouro;
-  var numero = dados.empresa.numero;
-  var complemento = dados.empresa.complemento;
-  var cep = dados.empresa.cep;
-  var estado = dados.empresa.estado;
-  var cidade = dados.empresa.cidade;
-  var plano = dados.empresa.plano;
-  var nomeCanavial = dados.empresa.nomeCanavial;
-  var coordenadasCanavial = dados.empresa.coordenadasCanavial;
-  var nome = dados.empresa.representante.nome;
-  var email = dados.empresa.representante.email;
-  var dataNascimento = dados.empresa.representante.dataNascimento;
-  var senhaRepresentante = dados.empresa.representante.senha;
+  var dados = req.body;
+  console.log("Dados recebidos para cadastro:", dados);
+  var cnpj = dados.cnpj;
+  console.log("CNPJ recebido para cadastro:", cnpj);
+  var razaoSocial = dados.razaoSocial;
+  var nomeFantasia = dados.nomeFantasia;
+  var senha = dados.senha;
+  var logradouro = dados.logradouro;
+  var numero = dados.numero;
+  var complemento = dados.complemento;
+  var cep = dados.cep;
+  var estado = dados.estado;
+  var cidade = dados.cidade;
+  var fkAssinatura = dados.fkAssinatura;
+  var nomeCanavial = dados.nomeCanavial;
+  var coordenadasCanavial = dados.coordenadasCanavial;
+  var nome = dados.representante.nome;
+  var email = dados.representante.email;
+  var dataNascimento = dados.representante.dataNascimento;
+  var senhaRepresentante = dados.representante.senha;
 
   if (cnpj == undefined) {
     res.status(400).send("Seu CNPJ está undefined!");
@@ -101,16 +103,14 @@ function cadastrar(req, res) {
     res.status(400).send("Seu Logradouro está undefined!");
   } else if (numero == undefined) {
     res.status(400).send("Seu Número está undefined!");
-  } else if (complemento == undefined) {
-    res.status(400).send("Seu Complemento está undefined!");
   } else if (cep == undefined) {
     res.status(400).send("Seu CEP está undefined!");
   } else if (estado == undefined) {
     res.status(400).send("Seu Estado está undefined!");
   } else if (cidade == undefined) {
     res.status(400).send("Sua Cidade está undefined!");
-  } else if (plano == undefined) {
-    res.status(400).send("Seu Plano está undefined!");
+  } else if (fkAssinatura == undefined) {
+    res.status(400).send("Sua fkAssinatura está undefined!");
   } else if (nomeCanavial == undefined) {
     res.status(400).send("Sua Canavial está undefined!");
   } else if (coordenadasCanavial == undefined) {
@@ -132,7 +132,7 @@ function cadastrar(req, res) {
       } else {
         var codigoAtivacao = gerarCodigoAcesso();
 
-        empresaModel.cadastrar(razaoSocial, nomeFantasia, cnpj, senha, logradouro, numero, complemento, cep, estado, cidade, plano, nomeCanavial, coordenadasCanavial,
+        empresaModel.cadastrar(razaoSocial, nomeFantasia, cnpj, senha, logradouro, numero, complemento, cep, estado, cidade, fkAssinatura, nomeCanavial, coordenadasCanavial,
           nome, email, dataNascimento, senhaRepresentante, codigoAtivacao).then((resultado) => {
           res.status(201).json({
             resultado: resultado,
