@@ -30,6 +30,15 @@ function autenticar(cnpj, codigo, senha) {
   return database.executar(instrucaoSql);
 }
 
+function autenticarRepresentante(email, codigo, senha) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, codigo, senha)
+    var instrucaoSql = `
+        SELECT id, nome, email, fk_empresa as empresaId FROM representante WHERE email = '${email}' AND codigo_ativacao = '${codigo}' AND senha = '${senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function cadastrar(razaoSocial, nomeFantasia, cnpj, senha, logradouro, numero, complemento, cep, estado, cidade, fkAssinatura, nomeCanavial, coordenadasCanavial, nome, email, dataNascimento, senhaRepresentante, codigoAtivacao) {
   var instrucaoSqlEmpresa = `INSERT INTO empresa (fk_assinatura, razao_social, nome_fantasia, cnpj, senha, codigo_ativacao)
   VALUES (${fkAssinatura}, '${razaoSocial}', '${nomeFantasia}', '${cnpj}', '${senha}', '${codigoAtivacao}')`;
@@ -45,8 +54,8 @@ function cadastrar(razaoSocial, nomeFantasia, cnpj, senha, logradouro, numero, c
     var instrucaoSqlCanavial = `INSERT INTO canavial (fk_empresa, nome, coordenada)
     VALUES (${fkEmpresa}, '${nomeCanavial}', '${coordenadasCanavial}')`;
 
-    var instrucaoSqlRepresentante = `INSERT INTO representante (fk_empresa, nome, email, dt_nascimento, senha)
-    VALUES (${fkEmpresa}, '${nome}', '${email}', '${dataNascimento}', '${senhaRepresentante}')`;
+    var instrucaoSqlRepresentante = `INSERT INTO representante (fk_empresa, nome, email, dt_nascimento, senha, codigo_ativacao)
+    VALUES (${fkEmpresa}, '${nome}', '${email}', '${dataNascimento}', '${senhaRepresentante}', '${codigoAtivacao}')`;
 
     console.log("Executando relacionamentos para fk_empresa: " + fkEmpresa);
     return Promise.all([
@@ -57,4 +66,4 @@ function cadastrar(razaoSocial, nomeFantasia, cnpj, senha, logradouro, numero, c
   });
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, autenticar, cadastrar, listar };
+module.exports = { buscarPorCnpj, buscarPorId, autenticar, autenticarRepresentante, cadastrar, listar };

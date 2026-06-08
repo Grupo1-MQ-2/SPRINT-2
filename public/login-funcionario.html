@@ -49,7 +49,7 @@
                 <input id="senha" type="password" placeholder="Mínimo 8 caracteres" />
             </div>
 
-            <button class="btn-login" onclick="Entrar()">Entrar</button>
+            <button class="btn-login" onclick="EntrarFuncionario()">Entrar</button>
 
 
             <p class="login-cadastrof">
@@ -61,3 +61,69 @@
         </div>
         <div class="imagem-direitafuncionario">
         </div>
+
+        </html>
+
+
+<script>
+
+  representante = {
+        nome: "",
+        email: "",
+        senha: ""
+    }
+
+         function EntrarFuncionario() {
+            var emailInput = document.getElementById("email").value;
+            var codigoVar = document.getElementById("codigo").value;
+            var senhaVar = document.getElementById("senha").value;
+
+            if (emailInput == "" || codigoVar == "" || senhaVar == "") {
+                alert("Por favor, preencha todos os campos!");
+                return;
+            }
+            console.log(representante);
+
+            representante.email = emailInput;
+            representante.senha = senhaVar;
+            representante.codigoAcesso = codigoVar;
+            
+            console.log(representante);
+            console.log("Enviando dados para o login:", emailInput, codigoVar);
+
+            fetch("/empresas/autenticarRepresentante", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(representante)
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Login realizado com sucesso! Redirecionando...");
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        sessionStorage.EMAIL_REPRESENTANTE = json.email;
+                        sessionStorage.NOME_REPRESENTANTE = json.nome;
+                        sessionStorage.ID_REPRESENTANTE = json.id
+                        sessionStorage.EMPRESA_REPRESENTANTE = json.empresaId;
+
+                        setTimeout(function () {
+                            window.location = "./dashboard.html";
+                        }, 1000);
+                    });
+
+                } else {
+                    alert("Erro ao tentar fazer o login! Verifique os dados.");
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+            }).catch(function (erro) {
+                console.log("Erro na requisição:", erro);
+            });
+
+            return false;
+        }
+
+</script>

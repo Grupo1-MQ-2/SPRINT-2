@@ -39,6 +39,7 @@ PRIMARY KEY (id, fk_empresa),
 nome VARCHAR(90) NOT NULL,
 email VARCHAR(45) UNIQUE NOT NULL,
 dt_nascimento DATE NOT NULL,
+codigo_ativacao VARCHAR(45) NOT NULL,
 senha VARCHAR(20) NOT NULL,
 CONSTRAINT fk_empresa_representante FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
 );
@@ -103,40 +104,4 @@ INSERT INTO assinatura (plano, dt_assinatura, valor) VALUES
 ('SEMESTRAL', '2025-11-01 09:30:00', 13500.00),
 ('TRIMESTRAL', '2026-02-15 14:15:00', 7200.00);
 
-
--- 2. Tabela: empresa
-INSERT INTO empresa (fk_assinatura, razao_social, nome_fantasia, CNPJ, senha, codigo_ativacao) VALUES
-(1, 'Agropecuária Vale do Mogi Ltda', 'AgroVale Cana', '45123456000189', 'AgroVale2026!', 'ACT-VALE-9921');
-
-
--- 3. Tabela: localizacaoEmpresa
-INSERT INTO localizacaoEmpresa (fk_empresa, logradouro, numero, complemento, CEP, cidade, estado) VALUES
-(1, 'Rodovia Deputado Rogério de Souza', 450, 'Km 12 - Galpão A', '14000000', 'Ribeirão Preto', 'SP');
-
-
--- 4. Tabela: representant
-INSERT INTO representante (id, fk_empresa, nome, email, dt_nascimento, senha) VALUES
-(1, 1, 'Carlos Eduardo Mendes', 'carlos.mendes@agrovalecana.com.br', '1982-04-14', 'CaduAgro82');
-
-
--- 5. Tabela: canavial
-INSERT INTO canavial (nome, fk_empresa, coordenada) VALUES
-('Talhão Sul - Cana Planta (Variedade CTC4)', 1, '-21.177900, -47.810600');
-
-
--- 6. Tabela: sensor
-INSERT INTO sensor (fk_canavial, estado, data_instalacao, unidade_medida) VALUES
-(1, 'ATIVO', '2025-06-01', 'ppm');
-
-
--- 7. Tabela: localSensor
-INSERT INTO localSensor (fk_sensor, coordenada) VALUES
-(1, '-22.725080, -47.648110');
-
-
--- 8. Tabela: leitura
-INSERT INTO leitura (fk_sensor, valor_gas, data_hora) VALUES
-(1, 380, '2026-06-08 10:00:00'), -- Nível normal de CO2 ambiental no canavial
-(1, 650, '2026-06-08 10:05:00'), -- Elevação de gases (alerta precoce de queimada ou quebra de biomassa)
-(1, 920, '2026-06-08 10:10:00'), -- Nível muito crítico (alta probabilidade de incêndio ativo)
-(1, 385, '2026-06-08 11:00:00');
+SELECT * FROM empresa;

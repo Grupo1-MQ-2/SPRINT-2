@@ -35,9 +35,10 @@ function buscarPorId(req, res) {
 var empresaModel = require("../models/empresaModel");
 
 function autenticar(req, res) {
-  var cnpj = req.body.cnpjServer;
-  var codigo = req.body.codigoServer;
-  var senha = req.body.senhaServer;
+  var dados = req.body;
+  var cnpj = dados.cnpj;
+  var codigo = dados.codigoAcesso;
+  var senha = dados.senha;
 
   if (cnpj == undefined) {
     res.status(400).send("Seu CNPJ está undefined!");
@@ -60,6 +61,43 @@ function autenticar(req, res) {
           res.status(403).send("CNPJ, Código e/ou Senha inválido(s)");
         } else {
           res.status(403).send("Mais de uma empresa com os mesmos dados de acesso!");
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+function autenticarRepresentante(req, res) {
+  var dados = req.body;
+  var email = dados.email;
+  var codigo = dados.codigoAcesso;
+  var senha = dados.senha;
+
+  if (email == undefined) {
+    res.status(400).send("Seu email está undefined!");
+  } else if (codigo == undefined) {
+    res.status(400).send("Seu código de acesso está undefined!");
+  } else if (senha == undefined) {
+    res.status(400).send("Sua senha está indefinida!");
+  } else {
+    empresaModel.autenticarRepresentante(email, codigo, senha)
+      .then(function (resultadoAutenticar) {
+        console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+
+        if (resultadoAutenticar.length == 1) {
+          res.json({
+            id: resultadoAutenticar[0].id,
+            empresaId: resultadoAutenticar[0].empresaId,
+            email: resultadoAutenticar[0].email,
+            nome: resultadoAutenticar[0].nome
+          });
+        } else if (resultadoAutenticar.length == 0) {
+          res.status(403).send("Email, Código e/ou Senha inválido(s)");
+        } else {
+          res.status(403).send("Mais de um representante com os mesmos dados de acesso!");
         }
       })
       .catch(function (erro) {
@@ -151,6 +189,7 @@ module.exports = {
   buscarPorCnpj,
   buscarPorId,
   autenticar,
+  autenticarRepresentante,
   cadastrar,
   listar,
 };

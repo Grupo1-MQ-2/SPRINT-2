@@ -11,6 +11,10 @@ router.post("/autenticar", function (req, res) {
   empresaController.autenticar(req, res);
 });
 
+router.post("/autenticarRepresentante", function (req, res) {
+  empresaController.autenticarRepresentante(req, res);
+});
+
 router.get("/buscar", function (req, res) {
   empresaController.buscarPorCnpj(req, res);
 });

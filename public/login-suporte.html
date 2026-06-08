@@ -48,3 +48,17 @@
         </div>
         <div class="imagem-direitasuporte">
         </div>
+        <script>
+            function Entrar() {
+                var email = document.getElementById("email").value;
+                var senha = document.getElementById("senha").value;
+
+                if(email == "suporte@canalytics.com" && senha == "sptech") {
+                    alert("Login bem-sucedido! Redirecionando para a página de suporte...");
+                    window.location.href = "bob.html";
+                } else {
+                    alert("Credenciais inválidas. Por favor, tente novamente.");
+                }
+            }
+        </script>
+</html>

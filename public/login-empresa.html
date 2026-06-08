@@ -54,7 +54,7 @@
 
             <p class="login-cadastro">
                 Não possui uma conta empresarial?
-                <a href="cadastro-empresa.html">Cadastre sua empresa</a>
+                <a href="cadastro-empresa-unificado.html">Cadastre sua empresa</a>
             </p>
         </div>
         <div class="imagem-direita">
@@ -62,18 +62,32 @@
     </div>
 
     <script>
+
+    let empresa = {
+    cnpj: "",
+    senha: "",
+    codigoAcesso: "",
+      
+  };
+
         function Entrar() {
-            var cnpjOriginal = document.getElementById("CNPJ").value;
-            var cnpjVar = cnpjOriginal.replace(/\D/g, '');
+            var cnpjInput = document.getElementById("CNPJ").value;
+            var cnpjLimpo = cnpjInput.replace(/\D/g, '');
             var codigoVar = document.getElementById("codigo").value;
             var senhaVar = document.getElementById("senha").value;
 
-            if (cnpjVar == "" || codigoVar == "" || senhaVar == "") {
+            if (cnpjLimpo == "" || codigoVar == "" || senhaVar == "") {
                 alert("Por favor, preencha todos os campos!");
                 return;
             }
+            console.log(empresa);
 
-            console.log("Enviando dados para o login:", cnpjVar, codigoVar);
+            empresa.cnpj = cnpjLimpo;
+            empresa.senha = senhaVar;
+            empresa.codigoAcesso = codigoVar;
+            
+            console.log(empresa);
+            console.log("Enviando dados para o login:", cnpjLimpo, codigoVar);
 
             fetch("/empresas/autenticar", {
                 method: "POST",
@@ -88,7 +102,7 @@
                     resposta.json().then(json => {
                         console.log(json);
                         sessionStorage.CNPJ_EMPRESA = json.cnpj;
-                        sessionStorage.NOME_EMPRESA = json.nome;
+                        sessionStorage.NOME_EMPRESA = json.nome_fantasia;
 
                         setTimeout(function () {
                             window.location = "./dashboard.html";
@@ -107,6 +121,9 @@
 
             return false;
         }
+
+
+  
     </script>
 
 </body>
