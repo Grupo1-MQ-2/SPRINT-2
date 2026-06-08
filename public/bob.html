@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BobIA Canalytics</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bob.css">
     <link rel="icon" href="img/CANALYTICS.png">
 </head>
 <body>
@@ -20,9 +21,9 @@
         </div>
     </nav>
 
-    <main class="conteudoPrincipal">
+    <main class="conteudoSuporte">
         <section class="secaoBobIa">
-            <h1 class="tituloPrincipal">BobIA <br><small class="small">(Canalytics)</small></h1>
+            <h1 class="tituloPrincipal">BobIA <br><small class="small">(Suporte N1)</small></h1>
             <textarea id="inputPergunta" class="campoTexto" placeholder="Digite sua dúvida, N3.."></textarea>
             <br><br>
             <button id="botaoGerar" class="botaoPrincipal" onclick="gerarResposta()">Gerar Resposta</button>
@@ -31,7 +32,32 @@
             <div id="divResposta" class="caixaResposta"></div>
         </section>
 
-        
+        <aside class="painelFerramentas">
+            <h2 class="tituloFerramentas">Ferramentas N1</h2>
+            
+            <div class="gradeFerramentas">
+                <a href="https://2007raphaeloliveira.atlassian.net/jira/projects?page=1&sortKey=name&sortOrder=ASC" target="_blank" class="cartaoFerramenta">
+                    <div class="areaImagemFerramenta">
+                        <!-- placeholder jira -->
+                    </div>
+                    <span class="nomeFerramenta">Jira do Projeto</span>
+                </a>
+
+                <a href="https://bandteccom.sharepoint.com/sites/CANALYTICSSPRINT2/Shared%20Documents/Forms/AllItems.aspx" target="_blank" class="cartaoFerramenta">
+                    <div class="areaImagemFerramenta">
+                        <!-- placeholder imagem pro drive -->
+                    </div>
+                    <span class="nomeFerramenta">Documentação (Drive)</span>
+                </a>
+            </div>
+
+            <div class="listaLinks">
+                <h3 class="subTituloFerramentas">Links Úteis</h3>
+                <ul class="linksN1">
+                    <li><a href="https://trello.com/invite/b/69b9821b08f841d4fe3362a2/ATTIb3cc97a6b3e3c2303cdbe48e10fac47d8B666E95/sprint-2" target="_blank" class="linkUtil">Trello do Projeto</a></li>
+                </ul>
+            </div>
+        </aside>
     </main>
 
     <footer class="rodape-final">
