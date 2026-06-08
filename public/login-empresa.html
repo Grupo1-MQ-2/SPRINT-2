@@ -80,11 +80,7 @@
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    cnpjServer: cnpjVar,
-                    codigoServer: codigoVar,
-                    senhaServer: senhaVar
-                })
+                body: JSON.stringify(empresa)
             }).then(function (resposta) {
                 if (resposta.ok) {
                     alert("Login realizado com sucesso! Redirecionando...");

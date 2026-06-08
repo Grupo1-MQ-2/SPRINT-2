@@ -70,10 +70,23 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-  var cnpj = req.body.cnpj;
-  var razaoSocial = req.body.razaoSocial;
-  var nomeFantasia = req.body.nomeFantasia;
-  var senha = req.body.senha;
+  var cnpj = req.body.empresa.cnpj;
+  var razaoSocial = req.body.empresa.razaoSocial;
+  var nomeFantasia = req.body.empresa.nomeFantasia;
+  var senha = req.body.empresa.senha;
+  var logradouro = req.body.empresa.logradouro;
+  var numero = req.body.empresa.numero;
+  var complemento = req.body.empresa.complemento;
+  var cep = req.body.empresa.cep;
+  var estado = req.body.empresa.estado;
+  var cidade = req.body.empresa.cidade;
+  var plano = req.body.empresa.plano;
+  var nomeCanavial = req.body.empresa.nomeCanavial;
+  var coordenadasCanavial = req.body.empresa.coordenadasCanavial;
+  var nome = req.body.empresa.representante.nome;
+  var email = req.body.empresa.representante.email;
+  var dataNascimento = req.body.empresa.representante.dataNascimento;
+  var senhaRepresentante = req.body.empresa.representante.senha;
 
   if (cnpj == undefined) {
     res.status(400).send("Seu CNPJ está undefined!");
@@ -82,6 +95,32 @@ function cadastrar(req, res) {
   } else if (nomeFantasia == undefined) {
     res.status(400).send("Seu Nome Fantasia está undefined!");
   } else if (senha == undefined) {
+    res.status(400).send("Sua Senha está undefined!");
+  } else if (logradouro == undefined) {
+    res.status(400).send("Seu Logradouro está undefined!");
+  } else if (numero == undefined) {
+    res.status(400).send("Seu Número está undefined!");
+  } else if (complemento == undefined) {
+    res.status(400).send("Seu Complemento está undefined!");
+  } else if (cep == undefined) {
+    res.status(400).send("Seu CEP está undefined!");
+  } else if (estado == undefined) {
+    res.status(400).send("Seu Estado está undefined!");
+  } else if (cidade == undefined) {
+    res.status(400).send("Sua Cidade está undefined!");
+  } else if (plano == undefined) {
+    res.status(400).send("Seu Plano está undefined!");
+  } else if (nomeCanavial == undefined) {
+    res.status(400).send("Sua Canavial está undefined!");
+  } else if (coordenadasCanavial == undefined) {
+    res.status(400).send("A coordenada do Canavial está undefined!");
+  } else if (nome == undefined) {
+    res.status(400).send("Seu Nome está undefined!");
+  } else if (email == undefined) {
+    res.status(400).send("Seu Email está undefined!");
+  } else if (dataNascimento == undefined) {
+    res.status(400).send("Sua Data de Nascimento está undefined!");
+  } else if (senhaRepresentante == undefined) {
     res.status(400).send("Sua Senha está undefined!");
   } else {
     empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
@@ -92,7 +131,8 @@ function cadastrar(req, res) {
       } else {
         var codigoAtivacao = gerarCodigoAcesso();
 
-        empresaModel.cadastrar(razaoSocial, nomeFantasia, cnpj, senha, codigoAtivacao).then((resultado) => {
+        empresaModel.cadastrar(razaoSocial, nomeFantasia, cnpj, senha, logradouro, numero, complemento, cep, estado, cidade, plano, nomeCanavial, coordenadasCanavial,
+          nome, email, dataNascimento, senhaRepresentante, codigoAtivacao).then((resultado) => {
           res.status(201).json({
             resultado: resultado,
             codigoAtivacao: codigoAtivacao
