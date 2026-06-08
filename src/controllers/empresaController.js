@@ -70,23 +70,24 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-  var cnpj = req.body.empresa.cnpj;
-  var razaoSocial = req.body.empresa.razaoSocial;
-  var nomeFantasia = req.body.empresa.nomeFantasia;
-  var senha = req.body.empresa.senha;
-  var logradouro = req.body.empresa.logradouro;
-  var numero = req.body.empresa.numero;
-  var complemento = req.body.empresa.complemento;
-  var cep = req.body.empresa.cep;
-  var estado = req.body.empresa.estado;
-  var cidade = req.body.empresa.cidade;
-  var plano = req.body.empresa.plano;
-  var nomeCanavial = req.body.empresa.nomeCanavial;
-  var coordenadasCanavial = req.body.empresa.coordenadasCanavial;
-  var nome = req.body.empresa.representante.nome;
-  var email = req.body.empresa.representante.email;
-  var dataNascimento = req.body.empresa.representante.dataNascimento;
-  var senhaRepresentante = req.body.empresa.representante.senha;
+  var dados = req.body
+  var cnpj = dados.empresa.cnpj;
+  var razaoSocial = dados.empresa.razaoSocial;
+  var nomeFantasia = dados.empresa.nomeFantasia;
+  var senha = dados.empresa.senha;
+  var logradouro = dados.empresa.logradouro;
+  var numero = dados.empresa.numero;
+  var complemento = dados.empresa.complemento;
+  var cep = dados.empresa.cep;
+  var estado = dados.empresa.estado;
+  var cidade = dados.empresa.cidade;
+  var plano = dados.empresa.plano;
+  var nomeCanavial = dados.empresa.nomeCanavial;
+  var coordenadasCanavial = dados.empresa.coordenadasCanavial;
+  var nome = dados.empresa.representante.nome;
+  var email = dados.empresa.representante.email;
+  var dataNascimento = dados.empresa.representante.dataNascimento;
+  var senhaRepresentante = dados.empresa.representante.senha;
 
   if (cnpj == undefined) {
     res.status(400).send("Seu CNPJ está undefined!");
