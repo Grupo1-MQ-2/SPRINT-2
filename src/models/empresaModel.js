@@ -1,5 +1,6 @@
 var database = require("../database/config");
 
+
 function buscarPorId(id) {
   var instrucaoSql = `SELECT * FROM empresa WHERE id = '${id}'`;
 
@@ -18,6 +19,17 @@ function buscarPorCnpj(cnpj) {
   return database.executar(instrucaoSql);
 }
 
+function autenticar(cnpj, codigo, senha) {
+  console.log("ACESSEI O EMPRESA MODEL para autenticar:", cnpj, codigo);
+
+  var instrucaoSql = `
+        SELECT id, cnpj, nome_fantasia FROM empresa WHERE cnpj = '${cnpj}' AND codigo_ativacao = '${codigo}' AND senha = '${senha}';
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 function cadastrar(razaoSocial, nomeFantasia, cnpj, senha, codigoAtivacao) {
   var instrucaoSql = `INSERT INTO empresa (razao_social, nome_fantasia, cnpj, senha, codigo_ativacao)
   VALUES ('${razaoSocial}', '${nomeFantasia}', '${cnpj}', '${senha}', '${codigoAtivacao}')`;
@@ -26,4 +38,4 @@ function cadastrar(razaoSocial, nomeFantasia, cnpj, senha, codigoAtivacao) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+module.exports = { buscarPorCnpj, buscarPorId, autenticar, cadastrar, listar };

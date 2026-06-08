@@ -59,3 +59,60 @@
         </div>
         <div class="imagem-direita">
         </div>
+    </div>
+
+    <script>
+        function Entrar() {
+            var cnpjOriginal = document.getElementById("CNPJ").value;
+            var cnpjVar = cnpjOriginal.replace(/\D/g, '');
+            var codigoVar = document.getElementById("codigo").value;
+            var senhaVar = document.getElementById("senha").value;
+
+            if (cnpjVar == "" || codigoVar == "" || senhaVar == "") {
+                alert("Por favor, preencha todos os campos!");
+                return;
+            }
+
+            console.log("Enviando dados para o login:", cnpjVar, codigoVar);
+
+            fetch("/empresas/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    cnpjServer: cnpjVar,
+                    codigoServer: codigoVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Login realizado com sucesso! Redirecionando...");
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        sessionStorage.CNPJ_EMPRESA = json.cnpj;
+                        sessionStorage.NOME_EMPRESA = json.nome;
+
+                        setTimeout(function () {
+                            window.location = "./dashboard.html";
+                        }, 1000);
+                    });
+
+                } else {
+                    alert("Erro ao tentar fazer o login! Verifique os dados.");
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+            }).catch(function (erro) {
+                console.log("Erro na requisição:", erro);
+            });
+
+            return false;
+        }
+    </script>
+
+</body>
+
+</html>
