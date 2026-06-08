@@ -57,23 +57,23 @@
         <a href="telaAcesso.html" class="voltar-cadastro">← Voltar para Central de Acesso</a>
 
         <div class="campo-empresa">
-          <label for="razao_social">Razão Social</label>
-          <input id="razao_social" type="text" placeholder="Digite a razão social">
+          <label for="inputRazaoSocial">Razão Social</label>
+          <input id="inputRazaoSocial" type="text" placeholder="Digite a razão social">
         </div>
 
         <div class="campo-empresa">
-          <label for="nome_fantasia">Nome Fantasia</label>
-          <input id="nome_fantasia" type="text" placeholder="Digite o nome fantasia">
+          <label for="inputNomeFantasia">Nome Fantasia</label>
+          <input id="inputNomeFantasia" type="text" placeholder="Digite o nome fantasia">
         </div>
 
         <div class="campo-empresa">
-          <label for="cnpj">CNPJ</label>
-          <input id="cnpj" type="text" placeholder="00.000.000/0000-00">
+          <label for="inputCnpj">CNPJ</label>
+          <input id="inputCnpj" type="text" placeholder="00.000.000/0000-00">
         </div>
 
         <div class="campo-empresa">
-          <label for="senha"> Crie uma Senha</label>
-          <input id="senha" type="password" placeholder="Mínimo 8 caracteres">
+          <label for="inputSenhaEmpresa"> Crie uma Senha</label>
+          <input id="inputSenhaEmpresa" type="password" placeholder="Mínimo 8 caracteres">
         </div>
 
         <button class="btn-cadastro-empresa" onclick="proximaEtapa(2)">
@@ -101,29 +101,29 @@
         <div class="inf-1">
           <div class="campo">
             <label>Logradouro</label>
-            <input id="logradouro" type="text" placeholder="Ex: Rua das Palmeiras" />
+            <input id="inputLogradouro" type="text" placeholder="Ex: Rua das Palmeiras" />
           </div>
         </div>
 
         <div class="inf-2">
           <div class="campo">
             <label>Número</label>
-            <input id="numero" type="text" placeholder="Ex: 340" />
+            <input id="inputNumero" type="text" placeholder="Ex: 340" />
           </div>
           <div class="campo">
             <label>Complemento</label>
-            <input id="complemento" type="text" placeholder="Apto, sala, bloco..." />
+            <input id="inputComplemento" type="text" placeholder="Apto, sala, bloco..." />
           </div>
         </div>
 
         <div class="inf-2">
           <div class="campo">
             <label>CEP</label>
-            <input id="cep" type="text" placeholder="00000-000" />
+            <input id="inputCep" type="text" placeholder="00000-000" />
           </div>
           <div class="campo">
             <label>Estado</label>
-            <select id="estado">
+            <select id="selectEstado">
               <option value="">Selecione</option>
               <option>AC</option>
               <option>AL</option>
@@ -159,7 +159,7 @@
         <div class="inf-1">
           <div class="campo">
             <label>Cidade</label>
-            <input id="cidade" type="text" placeholder="Ex: Ribeirão Preto" />
+            <input id="inputCidade" type="text" placeholder="Ex: Ribeirão Preto" />
           </div>
         </div>
 
@@ -229,12 +229,12 @@
 
           <div class="campo">
             <label>Nome do Canavial</label>
-            <input type="text" placeholder="Ex: Fazenda Norte" id="ipt_nome">
+            <input type="text" placeholder="Ex: Fazenda Norte" id="inputNomeCanavial">
           </div>
 
           <div class="campo">
             <label>Coordenada</label>
-            <input type="text" placeholder="Ex: -23.5505, -46.6333" id="ipt_coordernada">
+            <input type="text" placeholder="Ex: -23.5505, -46.6333" id="inputCoordenadaCanavial">
           </div>
 
         </div>
@@ -258,19 +258,19 @@
             <div class="campo">
               <label>Nome:</label>
 
-              <input type="text" name="representante" id="ipt_nome">
+              <input type="text" name="representante" id="inputNomeRepresentante">
 
             </div>
 
             <div class="campo">
               <label>Email</label>
-              <input type="text" name="email" id="ipt_email">
+              <input type="text" name="email" id="inputEmailRepresentante">
             </div>
 
 
             <div class="campo">
               <label>Data de Nascimento </label>
-              <input type="text" name="dt_nascimento" id="ipt_nasc">
+              <input type="date" name="dt_nascimento" id="inputDataNascimentoRepresentante">
             </div>
 
 
@@ -279,7 +279,7 @@
             <div class="campo">
               <label>Crie uma senha </label>
 
-              <input type="text" name="senha" id="ipt_senha">
+              <input type="password" name="senha" id="inputSenhaRepresentante">
             </div>
 
 
@@ -289,7 +289,7 @@
 
         </div>
 
-        <button class="btn-continuar" onclick="Continuar()">
+        <button class="btn-continuar" onclick="validacoesFinais()">
           Finalizar Cadastro
         </button>
 
@@ -331,62 +331,127 @@
 
   function proximaEtapa(etapa) {
     if (etapa === 2) {
+      const vetorErros = [];
 
-      if (razaoSocial == "" || nomeFantasia == "" || cnpj == "" || senha == "") {
-        alert("Por favor, preencha todos os campos!");
+      const razaoSocial = inputRazaoSocial.value.trim();
+      const nomeFantasia = inputNomeFantasia.value.trim();
+      const senhaEmpresa = inputSenhaEmpresa.value;
+      const cnpjLimpo = inputCnpj.value.replace(/\D/g, '');
+
+      if (!razaoSocial || !nomeFantasia || !senhaEmpresa || !inputCnpj.value.trim()) {
+        vetorErros.push("Por favor, preencha todos os campos básicos da empresa.");
+      }
+
+      if (cnpjLimpo.length !== 14 && inputCnpj.value.trim() !== "") {
+        vetorErros.push("Por favor, digite um CNPJ válido com 14 dígitos.");
+      }
+
+      if (vetorErros.length > 0) {
+        alert(vetorErros.join('\n'));
         return false;
       }
 
-      var cnpjLimpo = cnpj.replace(/\D/g, '');
-
-      if (cnpjLimpo.length !== 14) {
-        alert("Por favor, digite um CNPJ válido com 14 dígitos.");
-        return false;
-      }
-
-      empresa.razaoSocial = razao_social.value.trim()
-      empresa.nomeFantasia = nome_fantasia.value.trim()
-      empresa.cnpj = Number(cnpj.value);
-      empresa.senha = Number(senha.value);
+      empresa.razaoSocial = razaoSocial;
+      empresa.nomeFantasia = nomeFantasia;
+      empresa.cnpj = cnpjLimpo;
+      empresa.senha = senhaEmpresa;
 
       etapa1.style.display = "none";
       etapa2.style.display = "flex";
     }
+
     if (etapa === 3) {
-      if (logradouro == "" || numero == "" || cep == "" || estado == "" || cidade == "") {
-        alert("Por favor, preencha todos os campos!");
-        return false;
+      const vetorErros = [];
+
+      const logradouro = inputLogradouro.value.trim();
+      const numero = inputNumero.value.trim();
+      const complemento = inputComplemento.value.trim();
+      const cidade = inputCidade.value.trim();
+      const estado = selectEstado.value;
+      const cepLimpo = inputCep.value.replace(/\D/g, '');
+
+      if (!logradouro || !numero || !inputCep.value.trim() || !estado || !cidade) {
+        vetorErros.push("Por favor, preencha todos os campos obrigatórios de endereço.");
+      }
+      
+      if (isNaN(numero) || numero === "") {
+        vetorErros.push("Número de endereço inválido.");
       } 
       
-      var cepLimpo = cep.replace(/\D/g, '');
-      
-      if (!(isNaN(numero))) {
-        alert("Número inválido!");
-        return false;
-      } if (cepLimpo.length !== 8) {
-        alert("Por favor, digite um CEP válido com 8 dígitos.");
+      if (cepLimpo.length !== 8 && inputCep.value.trim() !== "") {
+        vetorErros.push("Por favor, digite um CEP válido com 8 dígitos.");
+      }
+
+      if (vetorErros.length > 0) {
+        alert(vetorErros.join('\n'));
         return false;
       }
       
-      empresa.logradouro = logradouro.value.trim();
-      empresa.numero = Number(numero.value);
-      empresa.cep = cep.value.trim();
-      empresa.estado = estado.value;
-      empresa.cidade = cidade.value.trim();
+      empresa.logradouro = logradouro;
+      empresa.numero = Number(numero);
+      empresa.complemento = complemento;
+      empresa.cep = cepLimpo;
+      empresa.estado = estado;
+      empresa.cidade = cidade;
 
       etapa2.style.display = "none";
       etapa3.style.display = "flex";
     }
+
     if (etapa === 4) {
       if (selectPlano.value === "") {
-        alert("Por favor, selecione um plano!");
+        alert("Por favor, selecione um plano de assinatura!");
         return false;
       }
       empresa.plano = selectPlano.value;
       etapa3.style.display = "none";
       etapa4.style.display = "flex";
     }
+  }
 
+  function validacoesFinais() {
+    const vetorErros = [];
+
+    const nomeCanavial = inputNomeCanavial.value.trim();
+    const coordenadaCanavial = inputCoordenadaCanavial.value.trim();
+    const nomeRepresentante = inputNomeRepresentante.value.trim();
+    const emailRepresentante = inputEmailRepresentante.value.trim().toLowerCase();
+    const dataNascimento = inputDataNascimentoRepresentante.value;
+    const senhaRepresentante = inputSenhaRepresentante.value;
+
+    if (!nomeCanavial || !coordenadaCanavial) {
+      vetorErros.push("Por favor, preencha os dados obrigatórios do Canavial.");
+    }
+
+    if (!nomeRepresentante || !emailRepresentante || !dataNascimento || !senhaRepresentante) {
+      vetorErros.push("Por favor, preencha todos os dados do Representante.");
+    }
+
+    const emailPossuiArroba = emailRepresentante.includes('@');
+    const emailPossuiPonto = emailRepresentante.includes('.');
+    
+    if ((!emailPossuiArroba || !emailPossuiPonto) && emailRepresentante !== "") {
+      vetorErros.push("Informe um e-mail válido para o Representante.");
+    }
+
+    const senhaTamanhoValido = senhaRepresentante.length >= 8;
+    if (!senhaTamanhoValido && senhaRepresentante !== "") {
+      vetorErros.push("A senha do representante deve ter pelo menos 8 caracteres.");
+    }
+
+    if (vetorErros.length > 0) {
+      alert(vetorErros.join('\n'));
+      return false;
+    }
+
+    empresa.nomeCanavial = nomeCanavial;
+    empresa.coordenadasCanavial = coordenadaCanavial;
+    empresa.representante.nome = nomeRepresentante;
+    empresa.representante.email = emailRepresentante;
+    empresa.representante.dataNascimento = dataNascimento;
+    empresa.representante.senha = senhaRepresentante;
+
+    cadastrarEmpresa();
   }
 
   function cadastrarEmpresa() {
