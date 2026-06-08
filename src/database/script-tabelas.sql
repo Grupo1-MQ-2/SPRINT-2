@@ -5,9 +5,7 @@ CREATE TABLE assinatura (
 id INT PRIMARY KEY AUTO_INCREMENT,
 plano VARCHAR(15) NOT NULL,
 CONSTRAINT chkPlano CHECK (plano IN('SEMESTRAL', 'TRIMESTRAL', 'ANUAL')),
-descricao VARCHAR(100) NOT NULL,
-dt_assinatura DATE NOT NULL,
-dt_vencimento DATE NOT NULL,
+dt_assinatura DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 valor DECIMAL(7,2) NOT NULL
 );
 
@@ -53,7 +51,7 @@ fk_empresa INT,
 PRIMARY KEY (id, fk_empresa),
 coordenada VARCHAR(60) NOT NULL,
 CONSTRAINT fk_empresa_canavial FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-); 
+);
 
 CREATE TABLE sensor (
 id INT AUTO_INCREMENT,
@@ -64,7 +62,7 @@ CONSTRAINT chkEstado CHECK (estado IN('ATIVO', 'INATIVO', 'MANUTENÇÃO')),
 data_instalacao DATE NOT NULL,
 unidade_medida VARCHAR(45) NOT NULL,
 CONSTRAINT fk_canavial_sensor FOREIGN KEY (fk_canavial) REFERENCES canavial(id)
-); 
+);
 
 CREATE TABLE localSensor (
 id INT AUTO_INCREMENT,
@@ -72,7 +70,7 @@ fk_sensor INT,
 PRIMARY KEY (id, fk_sensor),
 coordenada VARCHAR(60) NOT NULL,
 CONSTRAINT fk_sensor_local FOREIGN KEY (fk_sensor) REFERENCES sensor(id)
-); 
+);
 
 CREATE TABLE leitura (
 id INT AUTO_INCREMENT,
@@ -99,3 +97,63 @@ PRIMARY KEY (id, fk_leitura),
 data_hora DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 CONSTRAINT fk_leitura_alerta FOREIGN KEY (fk_leitura) REFERENCES leitura(id)
 );
+
+-- INSERÇÃO DAS TABELAS SENSOR E LOCALSENSOR QUE SERÃO AS ÚNICAS
+-- obs: não estão feitas
+INSERT INTO sensor (id, fk_canavial, estado, data_instalacao) VALUES
+(1, 1, 'ATIVO', '2024-01-10'),
+(2, 2, 'INATIVO', '2024-01-10'),
+(3, 3, 'MANUTENÇÃO', '2024-02-05');
+
+INSERT INTO localSensor (id, fk_sensor, coordenada) VALUES
+(1,  1,  '-23.550520, -46.633308'),
+(2,  2,  '-23.551000, -46.634000'),
+(3,  3,  '-23.552000, -46.635000'),
+(4,  4,  '-23.553000, -46.636000'),
+(5,  5,  '-22.910000, -47.060000'),
+(6,  6,  '-22.911000, -47.061000'),
+(7,  7,  '-22.912000, -47.062000'),
+(8,  8,  '-22.913000, -47.063000'),
+(9,  9,  '-21.177900, -47.810600'),
+(10, 10, '-21.178000, -47.811000'),
+(11, 11, '-21.179000, -47.812000'),
+(12, 12, '-21.180000, -47.813000'),
+(13, 13, '-20.540000, -47.400000'),
+(14, 14, '-20.541000, -47.401000'),
+(15, 15, '-20.542000, -47.402000'),
+(16, 16, '-20.543000, -47.403000');
+
+
+-- view: resulta no estado de todos os sensores, seus canaviais e loc em coordenadas
+CREATE VIEW vw_alertas_ativos AS
+SELECT
+a.id AS id_alerta, a.data_hora
+AS data_hora_alerta,
+le.valor_gas AS valor_gas, m.categoria
+AS criticidade, s.id AS id_sensor,
+s.estado AS estado_sensor,
+c.nome AS canavial
+FROM alerta a JOIN leitura le
+    ON a.fk_leitura = le.id
+JOIN metrica m
+    ON m.fk_leitura = le.id
+JOIN sensor s
+    ON le.fk_sensor = s.id
+JOIN canavial c
+    ON s.fk_canavial = c.id;
+
+-- view: resulta nos sensores que precisam de monitoramento
+CREATE VIEW vw_sensores_manutencao AS
+SELECT
+s.id AS id_sensor,
+s.estado AS estado_sensor,
+s.data_instalacao, c.nome AS canavial,
+ls.coordenada AS localizacao_sensor
+FROM sensor s JOIN canavial c
+    ON s.fk_canavial = c.id
+JOIN localSensor ls
+    ON ls.fk_sensor = s.id
+WHERE s.estado IN ('INATIVO', 'MANUTENÇÃO');
+
+select * from vw_sensores_manutencao;
+select * from vw_alertas_ativos;

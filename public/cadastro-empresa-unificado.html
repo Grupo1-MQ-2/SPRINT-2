@@ -117,12 +117,13 @@
         </div>
 
         <div class="inf-2">
-          <div class="campo" <label>CEP</label>
+          <div class="campo">
+            <label>CEP</label>
             <input id="cep" type="text" placeholder="00000-000" />
           </div>
           <div class="campo">
             <label>Estado</label>
-            <select>
+            <select id="estado">
               <option value="">Selecione</option>
               <option>AC</option>
               <option>AL</option>
@@ -183,29 +184,14 @@
           </p>
         </div>
 
-        <div class="planos-assinatura">
-
-          <div class="card-plano" data-plano="Trimestral" data-valor="15">
-            <h3>Trimestral</h3>
-            <p>Contrato de 3 meses</p>
-            <b>R$ 15,00</b>
-            <span>por sensor / mês</span>
-          </div>
-
-          <div class="card-plano destaque" data-plano="Semestral" data-valor="10">
-            <h3>Semestral</h3>
-            <p>Contrato de 6 meses</p>
-            <b>R$ 10,00</b>
-            <span>por sensor / mês</span>
-          </div>
-
-          <div class="card-plano" data-plano="Anual" data-valor="8">
-            <h3>Anual</h3>
-            <p>Contrato de 12 meses</p>
-            <b>R$ 8,00</b>
-            <span>por sensor / mês</span>
-          </div>
-
+        <div class="campo">
+          <label for="selectPlano">Plano de Assinatura</label>
+          <select id="selectPlano">
+            <option value="">Selecione</option>
+            <option value="TRIMESTRAL">Trimestral - Contrato de 3 meses (R$ 15,00 por sensor/mês)</option>
+            <option value="SEMESTRAL">Semestral - Contrato de 6 meses (R$ 10,00 por sensor/mês)</option>
+            <option value="ANUAL">Anual - Contrato de 12 meses (R$ 8,00 por sensor/mês)</option>
+          </select>
         </div>
 
         <button class="btn-continuar" onclick="proximaEtapa(4)">
@@ -392,7 +378,11 @@
       etapa3.style.display = "flex";
     }
     if (etapa === 4) {
-      empresa.
+      if (selectPlano.value === "") {
+        alert("Por favor, selecione um plano!");
+        return false;
+      }
+      empresa.plano = selectPlano.value;
       etapa3.style.display = "none";
       etapa4.style.display = "flex";
     }
