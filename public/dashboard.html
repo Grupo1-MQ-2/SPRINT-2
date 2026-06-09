@@ -12,24 +12,30 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <div class="error-card" id="cardErro">
-                <span id="mensagem_erro"></span>
-            </div>
+
             
 </head>
 
+<body>
 
-<body class="dashboard">
-
-    <nav>
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <img src="https://raw.githubusercontent.com/Grupo1-MQ-2/SPRINT-2/main/public/img/logo_canalytics.png"
-                alt="Logo Canalytics" style="height: 120px; width: auto;">
-        </div>
-        <div style="display: flex; align-items: center; gap: 20px;">
-            <button class="btn-1" onclick="window.location.href='index.html'">Voltar para o início</button>
+    <nav class="barra-navegacao">
+        <div class="container-navegacao">
+            <a href="index.html" class="logotipo">
+                <img src="img/CanalyticsLogo.png" alt="logotipo">
+            </a>
+            <ul class="menu-lista">
+                <li class="menu-item"><a href="index.html" class="link-menu">Início</a></li>
+            </ul>
         </div>
     </nav>
+
+            <div class="error-card" id="cardErro">
+                <span id="mensagem_erro" class="mensagemErro"></span>
+            </div>
+
+            <div class="error-card2" id="cardErro2">
+                <span id="mensagem_erro2" class="mensagemErro"></span>
+            </div>
 
     <div class="kpi-container" id="kpiContainer">
         <div class="kpi-indicadores">concentração atual
@@ -202,12 +208,20 @@
 
     function calcularStatus(valor_gas) {
         if (valor_gas >= 10000) {
-            cardErro.style.display = "block";
-                    mensagem_erro.innerHTML = `O valor ultrapassou 10.000 ppm, CRÍTICO`;
+            cardErro2.style.display = "block";
+                    mensagem_erro2.innerHTML = `<b>EMERGÊNCIA</b><br>O valor ultrapassou 10.000 ppm, CRÍTICO`;
+                    setTimeout(() => {
+                            if (cardErro) cardErro2.style.display = "none";
+                            if (mensagem_erro) mensagem_erro2.innerHTML = '';
+                        }, 5000);
             return 'CRÍTICO';
         } else if (valor_gas >= 5000) {
             cardErro.style.display = "block";
-                    mensagem_erro.innerHTML = `O valor ultrapassou 5.000 ppm, ALERTA`;
+                    mensagem_erro.innerHTML = `<b>ATENÇÃO</b><br> valor ultrapassou 5.000 ppm, ALERTA`;
+                        setTimeout(() => {
+                            if (cardErro) cardErro.style.display = "none";
+                            if (mensagem_erro) mensagem_erro.innerHTML = '';
+                        }, 5000);
             return 'ATENÇÃO';
         } else {
             return 'NORMAL';

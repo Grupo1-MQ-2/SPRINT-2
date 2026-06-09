@@ -1,3 +1,16 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #e9ecef;
+    color: #1f1e1e;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
 .kpi-container {
     display: flex;
     gap: 25px; 
@@ -49,86 +62,64 @@ h1 span {
     font-weight: normal;
 }
 
-body.dashboard {
-    background-color: white;
-    padding-top: 90px; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-nav {
+
+.barra-navegacao {
     background-color: #01352c;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    padding: 8px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    height: 70px; 
-    z-index: 1000;
 }
 
-nav a {
+.container-navegacao {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    height: 100%;
+}
+
+.logotipo img {
+    height: 200%;
+    max-height: 55px;
+    width: auto;
+    display: block;
+    margin-right: auto;
+}
+
+.menu-lista {
+    display: flex;
+    margin-left: auto;
+    margin-right: 0px;
+    justify-content: flex-end;
+    padding: 7px;
+    list-style: none
+}
+
+.link-menu,
+.link-menu-ativo {
     text-decoration: none;
-    color: #3B6D11;
-    font-weight: bold;
+    color: #ffffff;
+    font-weight: 500;
 }
 
-.btn-1 {
-    background-color: white;
-    color: #3B6D11;
-    border: 2px solid #3B6D11;
-    padding: 8px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.btn-2 {
-    background-color: #3B6D11;
+.link-menu-ativo {
     color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 20px;
-    cursor: pointer;
     font-weight: bold;
 }
 
-.btns-dash {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-    flex-wrap: wrap;
-    padding: 0 30% 0 30%;
+.link-menu:hover {
+    color: #97C459;
 }
 
-.btn-chart {
-    font-family: 'Barlow', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 0;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 10px 15px;
-    color: #65a359;          
-    background-color: white;
-    margin: 5px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+.link-menu-ativo:hover {
+    color: #97C459;
 }
 
-.btn-verde {
-    color: white;
-    background-color: #01352c;  
+.mensagemErro{
+    font-size: 20px;
+    color  : rgb(1, 0, 0);
 }
 
-.btn-white {
-    color: #65a359;
-    background-color: white;
-}
+
+
 
 
 .display-none  { display: none;  }
@@ -171,7 +162,21 @@ nav a {
 
 .error-card {
     display: none;
-    background-color: #3B6D11;
+    background-color: #f1ed0c;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    
+}
+
+.error-card2 {
+    display: none;
+    background-color: #f50606;
     color: #fff;
     border: 1px solid #fff;
     padding: 12px 20px;
