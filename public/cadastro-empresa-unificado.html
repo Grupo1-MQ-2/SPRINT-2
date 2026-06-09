@@ -91,7 +91,7 @@
     <!-- etapa 2 -->
     <section class="partedireita" id="etapa2" style="display: none;">
       <div class="alinhamento-direita">
-        <a class="voltar" href="../cadastro-empresa.html"> ←Voltar para a etapa anterior</a>
+        <a class="voltar" href="#" onclick="anteriorEtapa(2); return false;"> ←Voltar para a etapa anterior</a>
 
         <div>
           <div class="form-titulo">Localização da Empresa</div>
@@ -175,7 +175,7 @@
     <section class="partedireita" id="etapa3" style="display: none;">
       <div class="alinhamento-direita">
 
-        <a href="cadastro-empresa2.html" class="voltar">← Voltar para a etapa anterior</a>
+        <a href="#" class="voltar" onclick="anteriorEtapa(3); return false;">← Voltar para a etapa anterior</a>
 
         <div>
           <h2 class="form-titulo">Escolha seu Plano</h2>
@@ -211,7 +211,7 @@
 
       <div class="alinhamento-direita">
 
-        <a href="cadastro-empresa3.html" class="voltar">
+        <a href="#" class="voltar" onclick="anteriorEtapa(4); return false;">
           ← Voltar para a etapa anterior
         </a>
 
@@ -409,6 +409,21 @@
       etapa4.style.display = "flex";
     }
     console.log("Dados atuais da empresa (etapa3):", empresa);
+  }
+
+  function anteriorEtapa(etapaAtual) {
+    if (etapaAtual === 2) {
+      etapa2.style.display = "none";
+      etapa1.style.display = "flex";
+    }
+    if (etapaAtual === 3) {
+      etapa3.style.display = "none";
+      etapa2.style.display = "flex";
+    }
+    if (etapaAtual === 4) {
+      etapa4.style.display = "none";
+      etapa3.style.display = "flex";
+    }
   }
 
   function validacoesFinais() {
