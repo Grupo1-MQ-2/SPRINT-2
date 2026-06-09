@@ -648,7 +648,7 @@ h1 span {
 .cadastro {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     padding: 50px;
     background-color: #e9ecef;
     flex-wrap: nowrap;
@@ -730,7 +730,7 @@ h1 span {
 
 .imagem-direita {
     width: 400px;
-    height: 520px;
+    height: auto;
     border-radius: 0 18px 18px 0;
     background-image: url("../assets/imgs/canavial_login.webp");
     background-size: cover;
@@ -748,7 +748,7 @@ h1 span {
 
 .imagem-direitafuncionario {
     width: 400px;
-    height: 520px;
+    height: auto;
     border-radius: 0 18px 18px 0;
     background-image: url("../assets/imgs/imagem_funcionario.jpeg");
     background-size: cover;
