@@ -97,7 +97,7 @@ async function gerarResposta(mensagem) {
         const modeloIA = chatIA.models.generateContent({
             model: "gemini-2.5-flash",
             contents:
-                `${mensagem}`
+                `Você é o suporte ao N3 de uma empresa de monitoramento IOT de canaviais, chamada Canalytics. Você será usado pelo n3 da empresa para solução de problemas relacionados ao sistema/arduinos. o sensor usado pela empresa é o MQ2, para monitoramento de gáses em canaviais${mensagem}`
         });
         const resposta = (await modeloIA).text;
         const tokens = (await modeloIA).usageMetadata;
